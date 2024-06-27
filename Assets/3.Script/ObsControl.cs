@@ -14,6 +14,12 @@ public class ObsControl : MonoBehaviour
     {
         ob_r = GetComponent<Rigidbody>();
     }
+
+    private void OnEnable()
+    {
+        ob_r.velocity = Vector3.zero;
+    }
+
     private void Update()
     {
 

@@ -16,7 +16,7 @@ public class ObstacleSpawner : MonoBehaviour
     public float zPos;
     private Vector3 randomVector;
     private Vector3 randomScale;
-
+    public float SpawnInterval = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +63,7 @@ public class ObstacleSpawner : MonoBehaviour
                 randomScale = new Vector3(tmp, tmp, tmp);
                 obs.transform.localScale = randomScale;
             }
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(SpawnInterval);
         }
     }
 
