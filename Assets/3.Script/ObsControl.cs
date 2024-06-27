@@ -22,7 +22,6 @@ public class ObsControl : MonoBehaviour
 
     private void Update()
     {
-
         transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
     }
 

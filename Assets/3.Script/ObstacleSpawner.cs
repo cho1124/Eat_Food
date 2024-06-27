@@ -23,7 +23,7 @@ public class ObstacleSpawner : MonoBehaviour
     {
         instance = this;
         canISpawn = true;
-        for(int i = 0; i<10; i++)
+        for(int i = 0; i < 10; i++)
         {
             GameObject obs = Instantiate(obsPref, this.gameObject.transform);
             o_queue.Enqueue(obs);
