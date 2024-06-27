@@ -55,7 +55,7 @@ public class Map_Generator : MonoBehaviour
             for (int y = 0; y < map_size; y++)
             {
                 position.Set(cube_size * (-(map_size / 2) + x), 0, cube_size * (-(map_size / 2) + y));
-                map[x, y] = Instantiate(cube_original, position, Quaternion.identity);
+                map[x, y] = Instantiate(cube_original, position, Quaternion.identity, transform);
                 map[x, y].transform.localScale = scale;
             }
         }
