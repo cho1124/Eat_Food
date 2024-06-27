@@ -17,6 +17,10 @@ public class ObstacleSpawner : MonoBehaviour
     private Vector3 randomVector;
     private Vector3 randomScale;
     public float SpawnInterval = 1f;
+    public float ObjRotateSpeed = 3f;
+
+    
+
 
     // Start is called before the first frame update
     void Start()

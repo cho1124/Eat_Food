@@ -126,3 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obSpawner: {fileID: 0}
+  ob_r: {fileID: 0}
+  rotateSpeed: 3
+  up: 0

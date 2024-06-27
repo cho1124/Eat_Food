@@ -9,19 +9,18 @@ public class ObsControl : MonoBehaviour
     public float rotateSpeed;
     public float up;
 
-
-    private void Awake()
-    {
-        ob_r = GetComponent<Rigidbody>();
-    }
-
     private void OnEnable()
     {
+        obSpawner = FindObjectOfType<ObstacleSpawner>();
+        ob_r = GetComponent<Rigidbody>();
         ob_r.velocity = Vector3.zero;
+        rotateSpeed = obSpawner.ObjRotateSpeed;
+        
     }
-
     private void Update()
     {
+        //ob_r.AddTorque(0, 10f, 0);
+
         transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
     }
 
