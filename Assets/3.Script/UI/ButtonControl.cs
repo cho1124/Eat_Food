@@ -137,6 +137,6 @@ public class ButtonControl : MonoBehaviour
         Debug.Log("Confirming character: " + GameManager.instance.selectedCharacter);
         SceneManager.LoadScene("SampleScene");
     }
-    //-----------------------------------------------------------------------------------------//
+    //-----------------------------------------SceneCharEnd--------------------------------------//
 
 }
