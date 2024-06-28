@@ -5,10 +5,12 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     public float cooltime = 10f;
-    private bool isSkillReady = true;
     public float speed = 10f;
     public CharacterController playerCTRL;
     public CharacterType characterType;
+
+    private bool isSkillReady = true;
+    private Vector3 MoveDirection = Vector3.zero;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,7 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         InputHandler();
+        GRAVITY();
     }
 
     public void InputHandler()
@@ -100,5 +103,40 @@ public class PlayerControl : MonoBehaviour
         isSkillReady = true;
         Debug.Log("스킬 사용 가능");
     }
+
+    //---------------------------------------------------------------------
+    // gravity for fall of this character
+    //---------------------------------------------------------------------
+    private void GRAVITY()
+    {
+        if (playerCTRL.enabled)
+        {
+            if (CheckGrounded())
+            {
+                if (MoveDirection.y < -0.1f)
+                {
+                    MoveDirection.y = -0.1f;
+                }
+            }
+            MoveDirection.y -= 0.1f;
+            playerCTRL.Move(MoveDirection * Time.deltaTime);
+        }
+    }
+    //---------------------------------------------------------------------
+    // whether it is grounded
+    //---------------------------------------------------------------------
+    private bool CheckGrounded()
+    {
+        if (playerCTRL.isGrounded && playerCTRL.enabled)
+        {
+            return true;
+        }
+        Ray ray = new Ray(this.transform.position + Vector3.up * 0.1f, Vector3.down);
+        float range = 0.2f;
+        return Physics.Raycast(ray, range);
+    }
+
+
+
 
 }
