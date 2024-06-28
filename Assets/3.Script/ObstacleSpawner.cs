@@ -19,12 +19,13 @@ public class ObstacleSpawner : MonoBehaviour
     public float SpawnInterval = 1f;
     public float ObjRotateSpeed = 3f;
 
-    
+    private float map_width;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        map_width = GameObject.Find("Map_Generator").GetComponent<Map_Generator>().map_width_get;
         instance = this;
         canISpawn = true;
         for(int i = 0; i < 10; i++)
@@ -57,13 +58,13 @@ public class ObstacleSpawner : MonoBehaviour
         {
             if(o_queue.Count!=0)
             {
-                xPos = Random.Range(-30, 30);
-                zPos = Random.Range(-30, 30);
+                xPos = Random.Range(-(map_width / 2), (map_width / 2));
+                zPos = Random.Range(-(map_width / 2), (map_width / 2));
                 randomVector = new Vector3(xPos, 30, zPos);
                 GameObject obs = GetQueue();
-                obs.transform.position = gameObject.transform.position + randomVector;
+                obs.transform.position =  randomVector;
 
-                var tmp = Random.Range(320f, 800f);
+                var tmp = Random.Range(0.5f, 3f);
                 randomScale = new Vector3(tmp, tmp, tmp);
                 obs.transform.localScale = randomScale;
             }
