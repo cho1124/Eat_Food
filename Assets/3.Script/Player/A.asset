@@ -16,3 +16,4 @@ MonoBehaviour:
   character_name: A
   CharacterType: 0
   moveSpeed: 10
+  cooltime: 3

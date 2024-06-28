@@ -19,7 +19,7 @@ public class Player_Data : ScriptableObject
     public string character_name;
     public CharacterType CharacterType;
     public float moveSpeed;
-
+    public float cooltime;
 }
 
 

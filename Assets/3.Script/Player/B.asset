@@ -16,3 +16,4 @@ MonoBehaviour:
   character_name: B
   CharacterType: 1
   moveSpeed: 20
+  cooltime: 10

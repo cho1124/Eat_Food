@@ -42,7 +42,7 @@ public class Map_Generator : MonoBehaviour
         }
     }
 
-    public Vector2 Position_To_Index(Vector3 position)
+    public Vector2Int Position_To_Index(Vector3 position)
     {
         float x = position.x;
         float z = position.z;
@@ -50,17 +50,28 @@ public class Map_Generator : MonoBehaviour
         int index_x = Mathf.RoundToInt((x - (cube_size / 2)) / cube_size);
         int index_z = Mathf.RoundToInt((z - (cube_size / 2)) / cube_size);
 
-        return new Vector2(index_x, index_z);
+        return new Vector2Int(index_x, index_z);
     }
 
-    public void Repair_Floor(Vector2 position, int area)
+    public bool Index_To_Position(Vector2Int index, out Vector3 position_output)
+    {
+        int x = Mathf.Clamp(index.x, 0, map_size - 1);
+        int y = Mathf.Clamp(index.y, 0, map_size - 1);
+
+        position_output = map[x, y].transform.position;
+        
+        if (map[x, y].activeSelf) return true;
+        else return false;
+    }
+
+    public void Repair_Floor(Vector2Int index, int area)
     {
         int x;
         int y;
         
-        for(int i = (int)position.x - area; i <= (int)position.x + area; i++)
+        for(int i = index.x - area; i <= index.x + area; i++)
         {
-            for(int j = (int)position.y - area; j <= (int)position.y + area; j++)
+            for(int j = index.y - area; j <= index.y + area; j++)
             {
                 x = Mathf.Clamp(i, 0, map_size - 1);
                 y = Mathf.Clamp(j, 0, map_size - 1);

@@ -16,3 +16,4 @@ MonoBehaviour:
   character_name: C
   CharacterType: 2
   moveSpeed: 30
+  cooltime: 5
