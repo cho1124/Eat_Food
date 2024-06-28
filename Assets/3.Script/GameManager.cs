@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
-
+    public int selectedCharacter = 0;
     private void Awake()
     {
         if(instance == null)
@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     private void Update()
     {
         //테스트용 키
