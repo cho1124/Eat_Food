@@ -49,7 +49,7 @@ public class PlayerControl : MonoBehaviour
             //        case CharacterType.b:
 
             //StartCoroutine(MakeBigger_co());
-            StartCoroutine(Create_Floor_Co());
+            StartCoroutine(Repair_Floor_Co());
             
             //            Debug.Log("b skilled");
             //            break;
