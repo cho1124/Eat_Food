@@ -12,18 +12,25 @@ public class ObstacleSpawner : MonoBehaviour
     public bool canISpawn = false;
     private int active_count = 0;
 
+    
+    
+
+
+
     void Start()
     {
-        
         instance = this;
         canISpawn = true;
 
         //다른 종류의 음식 추가할 때는 밑에 for문에서 food_prefabs의 인덱스만 바꿔서 복붙하면 됩니당
         for(int i = 0; i < 10; i++)
         {
-            GameObject obs = Instantiate(food_prefabs[0], this.gameObject.transform);
-            food_list.Add(obs);
-            obs.SetActive(false);
+            for (int j = 0; j < food_prefabs.Count; j++)
+            {
+                GameObject obs = Instantiate(food_prefabs[j], transform);
+                food_list.Add(obs);
+                obs.SetActive(false);
+            }
         }
 
         StartCoroutine(ObsSpawn());

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -521,6 +521,11 @@ MonoBehaviour:
   instance: {fileID: 948269873}
   food_prefabs:
   - {fileID: 6837605333250013574, guid: 759a6ae0ab8ff0846a728c8e8f52c6b7, type: 3}
+  - {fileID: 2014473213122231611, guid: f4e0a901cccc73b41807216fc02f82a6, type: 3}
+  - {fileID: 3146953713081185482, guid: b090b78176b56974ab337b7a3a45c9b6, type: 3}
+  - {fileID: 2926470085485089070, guid: d2fe90b2b111b5344965bb2ad3571307, type: 3}
+  - {fileID: 4249088771471469406, guid: ffc57379cb7f9444fa16fee8488c05da, type: 3}
+  - {fileID: 3054360042354969032, guid: d38218ae22de9004e948c20c01fb0b62, type: 3}
   SpawnInterval: 0.5
   canISpawn: 0
 --- !u!1 &960606445
