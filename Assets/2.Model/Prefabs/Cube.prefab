@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4395854798108076608}
   - component: {fileID: 2528249301408807327}
   - component: {fileID: 2204879789184440389}
-  - component: {fileID: -4384291802255317506}
+  - component: {fileID: -5088221816285670320}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Floor
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-4384291802255317506
+--- !u!114 &-5088221816285670320
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -108,5 +108,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f50744a32924e0444acf660a65ade0f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  durability_max: 5
-  durability_current: 0
+  durability_max: 2
+  durability_current: 2
