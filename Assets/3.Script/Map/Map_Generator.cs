@@ -11,39 +11,19 @@ public class Map_Generator : MonoBehaviour
     [SerializeField] private GameObject[,] map;
     [SerializeField] private GameObject cube_original;
     [SerializeField] private int map_size;
-    [SerializeField] private float map_scale;
     [Space]
     [Header("큐브 관련")]
     [SerializeField] private float cube_size;
 
+    public float map_width_get;
 
-    //private float seed;
 
-    private void Start()
+    private void Awake()
     {
         map = new GameObject[map_size, map_size];
-        //seed = Random.Range(0, 10000f);
-        //var noiseArr = await Task.Run(Generate_Noise);
-        //Setting_Map(noiseArr);
+        map_width_get = cube_size * map_size;
         Setting_Map();
     }
-
-    /*
-    private float[,] Generate_Noise()
-    {
-        float[,] noiseArr = new float[map_size, map_size];
-        for (int x = 0; x < map_size; x++)
-        {
-            for (int y = 0; y < map_size; y++)
-            {
-                noiseArr[x, y] = Mathf.PerlinNoise(
-                    x * cube_size + seed,
-                    y * cube_size + seed);
-            }
-        }
-        return noiseArr;
-    }
-    */
 
     private void Setting_Map()
     {
