@@ -27,7 +27,8 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         InputHandler();
-        GRAVITY();
+        //GRAVITY();
+        //transform.position.Set(transform.position.x, 1f, transform.position.z);
     }
 
     public void InputHandler()
@@ -63,7 +64,10 @@ public class PlayerControl : MonoBehaviour
             //            Debug.Log("a skilled");
             //            break;
             //        case CharacterType.b:
-            StartCoroutine(MakeBigger_co());
+
+            //StartCoroutine(MakeBigger_co());
+            StartCoroutine(Repair_Floor_Co());
+            
             //            Debug.Log("b skilled");
             //            break;
             //        case CharacterType.c:
@@ -74,6 +78,23 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    private IEnumerator Repair_Floor_Co()
+    {
+        if (isSkillReady)
+        {
+            isSkillReady = false;
+            Debug.Log("스킬 사용");
+            float repair_dinstance = 5f;
+            int repair_radius = 5;
+
+            Map_Generator map_generator = GameObject.Find("Map_Generator").GetComponent<Map_Generator>();
+            Vector2 vector = map_generator.Position_To_Index(transform.position + transform.forward * repair_dinstance);
+            map_generator.Repair_Floor(vector, repair_radius);
+        }
+
+        StartCoroutine(Cooltimer_co());
+        yield return null;
+    }
 
     private IEnumerator MakeBigger_co()
     {
@@ -82,7 +103,6 @@ public class PlayerControl : MonoBehaviour
             isSkillReady = false;
             Debug.Log("스킬 사용");
             float increase = 0.1f;
-
 
             while (gameObject.GetComponent<Transform>().localScale.x < 14f)
             {
@@ -103,18 +123,13 @@ public class PlayerControl : MonoBehaviour
                 //크기가 바뀌는 속도
                 yield return new WaitForSeconds(0.05f);
             }
-
             StartCoroutine(Cooltimer_co());
         }
-
-
     }
-
 
     //스킬 구현 끝에 쿨타임 넣고싶으면 이 코루틴을 쓰면 됩니다
     private IEnumerator Cooltimer_co()
     {
-
         yield return new WaitForSeconds(cooltime);
 
         isSkillReady = true;
