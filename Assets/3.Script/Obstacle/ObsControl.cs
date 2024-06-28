@@ -34,7 +34,7 @@ public class ObsControl : MonoBehaviour
     }
     private void On_Collapse()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, 3.0f);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, transform.localScale.x * 2f);
 
         for (int i = 0; i < colliders.Length; i++)
         {

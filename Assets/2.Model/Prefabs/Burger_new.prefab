@@ -77,7 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   obSpawner: {fileID: 0}
   ob_r: {fileID: 0}
-  rotateSpeed: 100
+  rotateSpeed: 3
   up: 0
 --- !u!1001 &6305592991806440522
 PrefabInstance:

@@ -518,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee525141048d0914e89734b2b6255f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obsPref: {fileID: 1972489587776541776, guid: 6d8154f60a5707244a08cbe62177205a, type: 3}
+  obsPref: {fileID: 6837605333250013574, guid: 759a6ae0ab8ff0846a728c8e8f52c6b7, type: 3}
   instance: {fileID: 948269873}
   canISpawn: 0
   xPos: 0
