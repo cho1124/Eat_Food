@@ -4,6 +4,10 @@ using UnityEngine.SceneManagement;
 public class ButtonControl : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    public GameObject[] Animals;
+
+
     public void PlayButton()
     {
         SceneManager.LoadScene("SelectChar");
@@ -15,5 +19,20 @@ public class ButtonControl : MonoBehaviour
         #else
         Application.Quit();
         #endif
+    }
+
+    void LeftButton()
+    {
+
+    }
+
+    void RightButton()
+    {
+
+    }
+
+    void ConfirmButton()
+    {
+
     }
 }
