@@ -7,7 +7,7 @@ public class ButtonControl : MonoBehaviour
 
     public GameObject[] Animals;
 
-
+    
     public void PlayButton()
     {
         SceneManager.LoadScene("SelectChar");
@@ -20,6 +20,9 @@ public class ButtonControl : MonoBehaviour
         Application.Quit();
         #endif
     }
+
+    
+    
 
     void LeftButton()
     {
