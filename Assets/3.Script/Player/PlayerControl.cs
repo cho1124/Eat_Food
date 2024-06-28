@@ -11,24 +11,22 @@ public class PlayerControl : MonoBehaviour
     public CharacterController playerCTRL;
     public CharacterType characterType;
 
-
-
     private bool isSkillReady = true;
     private Vector3 MoveDirection = Vector3.zero;
     private Animator animator;
+    private bool is_on_floor = true;
+    public bool is_dead = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerCTRL = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         InputHandler();
-        //GRAVITY();
-        //transform.position.Set(transform.position.x, 1f, transform.position.z);
+        GRAVITY();
+        if (transform.position.y <= -20f) is_dead = true;
     }
 
     public void InputHandler()
@@ -46,10 +44,7 @@ public class PlayerControl : MonoBehaviour
             transform.rotation = targetRotation;
         }
 
-
-
         playerCTRL.Move(movement);
-        //transform.Translate(movement, Space.Self);
         characterSkill();
     }
 
@@ -136,136 +131,29 @@ public class PlayerControl : MonoBehaviour
         Debug.Log("스킬 사용 가능");
     }
 
-    //---------------------------------------------------------------------
-    // gravity for fall of this character
-    //---------------------------------------------------------------------
     private void GRAVITY()
     {
         if (playerCTRL.enabled)
         {
-            if (CheckGrounded())
-            {
-                if (MoveDirection.y < -0.1f)
-                {
-                    MoveDirection.y = -0.1f;
-                }
-            }
-            MoveDirection.y -= 0.1f;
+            if (is_on_floor) MoveDirection = Vector3.zero;
+            else MoveDirection.y -= 0.1f;
             playerCTRL.Move(MoveDirection * Time.deltaTime);
         }
     }
-    //---------------------------------------------------------------------
-    // whether it is grounded
-    //---------------------------------------------------------------------
-    private bool CheckGrounded()
+    private void OnTriggerEnter(Collider other)
     {
-        if (playerCTRL.isGrounded && playerCTRL.enabled)
+        if (other.CompareTag("Floor"))
         {
-            return true;
+            is_on_floor = true;
         }
-        Ray ray = new Ray(this.transform.position + Vector3.up * 0.1f, Vector3.down);
-        float range = 0.01f;
-        return Physics.Raycast(ray, range);
     }
 
-    //private void MOVE()
-    //{
-    //    // velocity
-    //    if (animator.GetCurrentAnimatorStateInfo(0).fullPathHash == MoveState)
-    //    {
-    //        if (Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
-    //        {
-    //            MOVE_Velocity(new Vector3(0, 0, -Speed), new Vector3(0, 180, 0));
-    //        }
-    //        else if (Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
-    //        {
-    //            MOVE_Velocity(new Vector3(0, 0, Speed), new Vector3(0, 0, 0));
-    //        }
-    //        else if (Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.RightArrow))
-    //        {
-    //            MOVE_Velocity(new Vector3(Speed, 0, 0), new Vector3(0, 90, 0));
-    //        }
-    //        else if (Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.LeftArrow))
-    //        {
-    //            MOVE_Velocity(new Vector3(-Speed, 0, 0), new Vector3(0, 270, 0));
-    //        }
-    //    }
-    //    KEY_DOWN();
-    //    KEY_UP();
-    //}
-    ////---------------------------------------------------------------------
-    //// value for moving
-    ////---------------------------------------------------------------------
-    //private void MOVE_Velocity(Vector3 velocity, Vector3 rot)
-    //{
-    //    MoveDirection = new Vector3(velocity.x, MoveDirection.y, velocity.z);
-    //    if (playerCTRL)
-    //    {
-    //        playerCTRL.Move(MoveDirection * Time.deltaTime);
-    //    }
-    //    MoveDirection.x = 0;
-    //    MoveDirection.z = 0;
-    //    this.transform.rotation = Quaternion.Euler(rot);
-    //}
-    ////---------------------------------------------------------------------
-    //// whether arrow key is key down
-    ////---------------------------------------------------------------------
-    //private void KEY_DOWN()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.UpArrow))
-    //    {
-    //        animator.CrossFade(MoveState, 0.1f, 0, 0);
-    //    }
-    //    else if (Input.GetKeyDown(KeyCode.DownArrow))
-    //    {
-    //        animator.CrossFade(MoveState, 0.1f, 0, 0);
-    //    }
-    //    else if (Input.GetKeyDown(KeyCode.LeftArrow))
-    //    {
-    //        animator.CrossFade(MoveState, 0.1f, 0, 0);
-    //    }
-    //    else if (Input.GetKeyDown(KeyCode.RightArrow))
-    //    {
-    //        animator.CrossFade(MoveState, 0.1f, 0, 0);
-    //    }
-    //}
-    ////---------------------------------------------------------------------
-    //// whether arrow key is key up
-    ////---------------------------------------------------------------------
-    //private void KEY_UP()
-    //{
-    //    if (Input.GetKeyUp(KeyCode.UpArrow))
-    //    {
-    //        if (!Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
-    //        {
-    //            Anim.CrossFade(IdleState, 0.1f, 0, 0);
-    //        }
-    //    }
-    //    else if (Input.GetKeyUp(KeyCode.DownArrow))
-    //    {
-    //        if (!Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.LeftArrow) && !Input.GetKey(KeyCode.RightArrow))
-    //        {
-    //            Anim.CrossFade(IdleState, 0.1f, 0, 0);
-    //        }
-    //    }
-    //    else if (Input.GetKeyUp(KeyCode.LeftArrow))
-    //    {
-    //        if (!Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.RightArrow))
-    //        {
-    //            Anim.CrossFade(IdleState, 0.1f, 0, 0);
-    //        }
-    //    }
-    //    else if (Input.GetKeyUp(KeyCode.RightArrow))
-    //    {
-    //        if (!Input.GetKey(KeyCode.UpArrow) && !Input.GetKey(KeyCode.DownArrow) && !Input.GetKey(KeyCode.LeftArrow))
-    //        {
-    //            Anim.CrossFade(IdleState, 0.1f, 0, 0);
-    //        }
-    //    }
-    //}
-
-
-
-
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Floor"))
+        {
+            is_on_floor = false;
+        }
+    }
 
 }
