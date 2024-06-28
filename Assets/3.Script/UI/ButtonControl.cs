@@ -29,6 +29,7 @@ public class ButtonControl : MonoBehaviour
                 }
             }
         }
+        ShowCharInfo();
     }
 
     public void PlayButton()
@@ -53,16 +54,16 @@ public class ButtonControl : MonoBehaviour
     {
         if(GameManager.instance.selectedCharacter==0)
         {
-            info.text = "플레이어 1\n\n플레이어1입니다\n설명을 추가해주세요";
+            info.text = "마술사 유령\n\n마술사 유령입니다\n슬라이딩을 할 수 있습니다";
 
         }
         else if (GameManager.instance.selectedCharacter == 1)
         {
-            info.text = "플레이어 2\n\n플레이어2입니다\n설명을 추가해주세요";
+            info.text = "바이킹 유령\n\n바이킹 유령입니다\n몸의 크기를 키울 수 있습니다";
         }
         else
         {
-            info.text = "플레이어 3\n\n플레이어3입니다\n설명을 추가해주세요";
+            info.text = "빌더 유령\n\n빌더 유령입니다\n파괴된 블록을 재생할 수 있습니다";
         }
     }
 
