@@ -19,8 +19,6 @@ public class PlayerInfo
     }
 }
 
-
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
@@ -47,8 +45,6 @@ public class GameManager : MonoBehaviour
             
         }
 
-        
-
     }
 
     private void Update()
@@ -74,11 +70,8 @@ public class GameManager : MonoBehaviour
     private void LoadAll()
     {
         
-
         SceneManager.LoadScene(0);
     }
-
-
 
     void SavePlayerDataToJson()
     {
