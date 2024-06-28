@@ -114,6 +114,17 @@ public class ObsControl : MonoBehaviour
         if (collision.collider.CompareTag("Floor"))
         {
             Debug.Log("¿€µø¿ﬂµ ");
+            if (ob_particle != null)
+            {
+                ob_particle.transform.position = transform.position;
+                ob_particle.Play();
+                Debug.Log("Particle played");
+            }
+            else
+            {
+                Debug.LogError("ParticleSystem reference is missing.");
+            }
+
             StartCoroutine(On_Collapse());
         }
     }
@@ -124,17 +135,7 @@ public class ObsControl : MonoBehaviour
         ob_r.isKinematic = true;
         ob_msRenderer.enabled = false;
 
-        if (ob_particle != null)
-        {
-            ob_particle.transform.position = transform.position;
-            ob_particle.Play();
-            Debug.Log("Particle played");
-        }
-        else
-        {
-            Debug.LogError("ParticleSystem reference is missing.");
-        }
-
+        
         yield return new WaitForSeconds(3f);
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, transform.localScale.x * 2f);
@@ -151,6 +152,7 @@ public class ObsControl : MonoBehaviour
             }
         }
 
+        
         obSpawner.instance.List_Active_False(gameObject);
     }
 }

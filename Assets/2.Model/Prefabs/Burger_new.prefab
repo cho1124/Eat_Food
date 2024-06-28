@@ -154,6 +154,10 @@ PrefabInstance:
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19820710, guid: f66e014454bdeb942944471c5e19da6c, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 19838316, guid: f66e014454bdeb942944471c5e19da6c, type: 3}
       propertyPath: playOnAwake
       value: 0
