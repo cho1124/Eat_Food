@@ -139,4 +139,17 @@ public class ButtonControl : MonoBehaviour
     }
     //-----------------------------------------SceneCharEnd--------------------------------------//
 
+
+    //------------------------------------PauseMenu or End Menu----------------------------------//
+
+    public void RetryButton()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
+
+    public void ReturnToTitleButton()
+    {
+        SceneManager.LoadScene("Title");
+    }
+
 }
