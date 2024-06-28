@@ -25,14 +25,24 @@ public class ObsControl : MonoBehaviour
         if (transform.position.y < -30) obSpawner.instance.List_Active_False(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Floor"))
+    //    {
+    //        Debug.Log("ÀÛµ¿ÀßµÊ");
+    //        On_Collapse();
+    //    }
+    //}
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Floor"))
+        if (collision.collider.CompareTag("Floor"))
         {
             Debug.Log("ÀÛµ¿ÀßµÊ");
             On_Collapse();
         }
     }
+
     private void On_Collapse()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, transform.localScale.x * 2f);

@@ -132,7 +132,7 @@ public class PlayerControl : MonoBehaviour
             return true;
         }
         Ray ray = new Ray(this.transform.position + Vector3.up * 0.1f, Vector3.down);
-        float range = 0.2f;
+        float range = 0.01f;
         return Physics.Raycast(ray, range);
     }
 
