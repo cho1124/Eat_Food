@@ -6,7 +6,7 @@ public class ButtonControl : MonoBehaviour
     // Start is called before the first frame update
     public void PlayButton()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("SelectChar");
     }
     public void ExitButton()
     {
