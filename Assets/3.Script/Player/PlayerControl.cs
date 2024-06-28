@@ -135,9 +135,13 @@ public class PlayerControl : MonoBehaviour
     {
         if (playerCTRL.enabled)
         {
-            if (is_on_floor) MoveDirection = Vector3.zero;
+            if (is_on_floor)
+            {
+                MoveDirection = Vector3.zero;
+                return;
+            } 
             else MoveDirection.y -= 0.1f;
-            playerCTRL.Move(MoveDirection * Time.deltaTime);
+            //playerCTRL.Move(MoveDirection * Time.deltaTime);
         }
     }
     private void OnTriggerEnter(Collider other)

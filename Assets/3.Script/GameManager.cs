@@ -10,6 +10,7 @@ public class PlayerInfo
     public string playerName;
     public string characterName;
     public int score;
+    public GameObject GameOver_Obj;
 
     public PlayerInfo(string playerName, string characterName, int score)
     {

@@ -61,8 +61,6 @@ public class ButtonControl : MonoBehaviour
 #endif
     }
 
-
-
     //-----------------------------------------SceneChar--------------------------------------//
 
     public void ShowCharInfo()
