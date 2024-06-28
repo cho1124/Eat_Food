@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using System.Collections;
 using TMPro;
 
 public class ButtonControl : MonoBehaviour
@@ -9,6 +10,20 @@ public class ButtonControl : MonoBehaviour
     public Scene currentScene;
     public TextMeshProUGUI info;
 
+
+
+    //
+    // SceneTransition
+    //
+  
+    private IEnumerator Scene_Transition_co()
+    {
+
+
+        yield return new WaitForSeconds(1f);
+
+    }
+  
     private void Awake()
     {
         currentScene = SceneManager.GetActiveScene();
@@ -162,3 +177,5 @@ public class ButtonControl : MonoBehaviour
     }
 
 }
+
+
