@@ -1586,7 +1586,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2036434475046749315, guid: c2bdb75801dd0b8409465ff3d012c7df, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c2bdb75801dd0b8409465ff3d012c7df, type: 3}
 --- !u!1 &1789303501
 GameObject:
@@ -1617,6 +1618,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055950c7ff16ddb4b9c0dbb6968dd073, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selectedCharacter: 2
 --- !u!4 &1789303503
 Transform:
   m_ObjectHideFlags: 0
@@ -1939,8 +1941,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cube_original: {fileID: 5525376088913530753, guid: 1f2fdf29e7111da40b0fb20154edbcdf, type: 3}
   map_size: 100
-  map_scale: 0
   cube_size: 0.5
+  map_width_get: 0
 --- !u!4 &2082983592
 Transform:
   m_ObjectHideFlags: 0

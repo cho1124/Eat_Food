@@ -22,7 +22,8 @@ public class Player_Generator : MonoBehaviour
         player = Instantiate(player_data.character_prefab);
         playerControl = player.AddComponent<PlayerControl>();
         playerControl.speed = player_data.moveSpeed;
-
+        playerControl.characterType = player_data.CharacterType;
+        
 
     }
 
