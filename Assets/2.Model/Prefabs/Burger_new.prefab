@@ -78,6 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ob_particle: {fileID: 5666941357389030127}
   rotateSpeed: 60
+  ob_msRenderer: {fileID: 5514841970608037780}
 --- !u!1001 &5666941357404115529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -288,5 +289,10 @@ PrefabInstance:
 --- !u!4 &5533330446352251448 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1966843592999517810, guid: 6d8154f60a5707244a08cbe62177205a, type: 3}
+  m_PrefabInstance: {fileID: 6305592991806440522}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5514841970608037780 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1948177268162501598, guid: 6d8154f60a5707244a08cbe62177205a, type: 3}
   m_PrefabInstance: {fileID: 6305592991806440522}
   m_PrefabAsset: {fileID: 0}
