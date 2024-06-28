@@ -64,8 +64,8 @@ public class ObstacleSpawner : MonoBehaviour
         {
             if(food_list.Count!=0 && active_count != food_list.Count)
             {
-                xPos = Random.Range(-(map_width / 2), (map_width / 2));
-                zPos = Random.Range(-(map_width / 2), (map_width / 2));
+                xPos = Random.Range(0, map_width);
+                zPos = Random.Range(0, map_width);
                 randomVector = new Vector3(xPos, 30, zPos);
 
                 scale = Random.Range(0.5f, 3f);
