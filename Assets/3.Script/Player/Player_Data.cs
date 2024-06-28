@@ -5,9 +5,9 @@ using UnityEngine;
 
 public enum CharacterType
 {
-    a,
-    b,
-    c
+    매지션,
+    바이킹,
+    빌더
 }
 
 
@@ -19,21 +19,6 @@ public class Player_Data : ScriptableObject
     public string character_name;
     public CharacterType CharacterType;
     public float moveSpeed;
-    
-
-    public void Skill()
-    {
-        switch(CharacterType)
-        {
-            case CharacterType.a:
-                break;
-            case CharacterType.b:
-                break;
-            case CharacterType.c:
-                break;
-
-        }
-    }
 
 }
 
