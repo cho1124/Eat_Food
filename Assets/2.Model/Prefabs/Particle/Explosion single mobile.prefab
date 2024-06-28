@@ -4676,13 +4676,14 @@ GameObject:
   m_Component:
   - component: {fileID: 453058}
   - component: {fileID: 19820710}
+  - component: {fileID: 1959219797341811519}
   m_Layer: 0
   m_Name: Explosion single mobile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &453058
 Transform:
   m_ObjectHideFlags: 0
@@ -9414,6 +9415,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &1959219797341811519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13cfc657bd5e3a24f9066d036d7670b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &145806
 GameObject:
   m_ObjectHideFlags: 0

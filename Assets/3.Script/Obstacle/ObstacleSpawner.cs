@@ -6,16 +6,13 @@ public class ObstacleSpawner : MonoBehaviour
 {
     public  ObstacleSpawner instance;
 
+    [SerializeField] private ParticleSystem explosive_particle_original;
+    private ParticleSystem explosive_particle_clone;
     [SerializeField] private List<GameObject> food_prefabs;
     private List<GameObject> food_list = new List<GameObject>();
     public float SpawnInterval = 1f;
     public bool canISpawn = false;
     private int active_count = 0;
-
-    
-    
-
-
 
     void Start()
     {
@@ -56,6 +53,8 @@ public class ObstacleSpawner : MonoBehaviour
         active_count--;
         int index = food_list.IndexOf(food);
         food_list[index].SetActive(false);
+        explosive_particle_clone = Instantiate(explosive_particle_original, food_list[index].transform.position, Quaternion.identity);
+        explosive_particle_clone.gameObject.SetActive(true);
     }
 
     IEnumerator ObsSpawn()
