@@ -53,23 +53,26 @@ public class PlayerControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //    switch (characterType)
-            //    {
-            //        case CharacterType.a:
-            //            Debug.Log("a skilled");
-            //            break;
-            //        case CharacterType.b:
 
-            //StartCoroutine(MakeBigger_co());
-            StartCoroutine(Repair_Floor_Co());
-            
-            //            Debug.Log("b skilled");
-            //            break;
-            //        case CharacterType.c:
-            //            Debug.Log("c skilled");
-            //            break;
-            //
-            //    }
+            switch (characterType)
+            {
+                case CharacterType.매지션:
+                    Debug.Log("a skilled");
+                    break;
+                case CharacterType.바이킹:
+
+                    StartCoroutine(MakeBigger_co());
+                    break;
+                case CharacterType.빌더:
+                    
+                    StartCoroutine(Repair_Floor_Co());
+                    break;
+
+            }
+
+
+
+
         }
     }
 
