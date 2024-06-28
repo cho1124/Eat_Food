@@ -9,7 +9,7 @@ public class ButtonControl : MonoBehaviour
     public GameObject[] player;
     public Scene currentScene;
     public TextMeshProUGUI info;
-
+    public SceneTransition sct;
 
 
     //
@@ -26,6 +26,7 @@ public class ButtonControl : MonoBehaviour
   
     private void Awake()
     {
+        sct = GameObject.Find("TransitionImage").GetComponent<SceneTransition>() ;
         currentScene = SceneManager.GetActiveScene();
         if (currentScene.name == "SelectChar")
         {
@@ -46,10 +47,12 @@ public class ButtonControl : MonoBehaviour
         }
         ShowCharInfo();
     }
+    //----------------------------title--------------------------------------//
 
     public void PlayButton()
     {
-        SceneManager.LoadScene("SelectChar");
+        sct.SceneTrans("SelectChar");
+        //SceneManager.LoadScene("SelectChar");
     }
 
     public void ExitButton()
@@ -149,7 +152,8 @@ public class ButtonControl : MonoBehaviour
         }
 
         Debug.Log("Confirming character: " + GameManager.instance.selectedCharacter);
-        SceneManager.LoadScene("SampleScene");
+        sct.SceneTrans("SampleScene");
+        //SceneManager.LoadScene("SampleScene");
     }
     //-----------------------------------------SceneCharEnd--------------------------------------//
 
@@ -158,11 +162,13 @@ public class ButtonControl : MonoBehaviour
 
     public void RetryButton()
     {
-        SceneManager.LoadScene("SampleScene");
+        sct.SceneTrans("SampleScene");
+        //SceneManager.LoadScene("SampleScene");
     }
 
     public void ReturnToTitleButton()
     {
+        sct.SceneTrans("Title");
         SceneManager.LoadScene("Title");
     }
     public void EnterNameButton()
