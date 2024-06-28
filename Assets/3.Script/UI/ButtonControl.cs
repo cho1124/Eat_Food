@@ -140,7 +140,7 @@ public class ButtonControl : MonoBehaviour
     //-----------------------------------------SceneCharEnd--------------------------------------//
 
 
-    //------------------------------------PauseMenu or End Menu----------------------------------//
+    //------------------------------------GameOverUIButton----------------------------------//
 
     public void RetryButton()
     {
@@ -150,6 +150,14 @@ public class ButtonControl : MonoBehaviour
     public void ReturnToTitleButton()
     {
         SceneManager.LoadScene("Title");
+    }
+    public void EnterNameButton()
+    {
+        GameObject gameover = GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject;//.gameObject.SetActive(true);//GameObject.Find("GameOverPanel");
+        GameObject enterYourName = GameObject.Find("EnterYourName");
+        gameover.SetActive(true);
+        enterYourName.SetActive(false);
+        
     }
 
 }
