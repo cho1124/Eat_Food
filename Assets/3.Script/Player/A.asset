@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc3826d4a59c09a4c9a9a42bfdde3b30, type: 3}
   m_Name: A
   m_EditorClassIdentifier: 
-  character_prefab: {fileID: 496472131866389991, guid: 09d1d538e5305b845b251e8490f2c4a9, type: 3}
+  character_prefab: {fileID: 8102217869960094293, guid: 8fb340f90b7bf2f4fa675d033723057a, type: 3}
   character_name: A
   CharacterType: 0
   moveSpeed: 10

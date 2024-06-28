@@ -8,6 +8,7 @@ public class PlayerControl : MonoBehaviour
     public float speed = 10f;
     public CharacterController playerCTRL;
     public CharacterType characterType;
+
     // Start is called before the first frame update
     void Start()
     {
