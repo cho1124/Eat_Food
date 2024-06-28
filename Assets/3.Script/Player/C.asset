@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: C
   m_EditorClassIdentifier: 
   character_prefab: {fileID: 1106698027180869613, guid: da412e24faaf2e1439c769357e0bf392, type: 3}
-  character_name: 
+  character_name: C
   CharacterType: 2
   moveSpeed: 30
