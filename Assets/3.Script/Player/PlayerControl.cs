@@ -10,6 +10,7 @@ public class PlayerControl : MonoBehaviour
     public float cooltime;
 
     private bool isSkillReady = true;
+    private bool is_casting = false;
     private Vector3 MoveDirection = Vector3.zero;
     private Animator animator;
     public bool is_dead = false;
@@ -17,13 +18,12 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         playerCTRL = GetComponent<CharacterController>();
-        
     }
 
     void Update()
     {
-        InputHandler();
-        if (transform.position.y <= -20f) is_dead = true;
+        if(!is_casting) InputHandler();
+        if(transform.position.y <= -20f) is_dead = true;
     }
 
     public void InputHandler()
@@ -42,10 +42,7 @@ public class PlayerControl : MonoBehaviour
 
         MoveDirection = Vector3.zero;
         RaycastHit[] hits = Physics.RaycastAll(transform.position + Vector3.up * transform.localScale.y, Vector3.down, 100f);
-        if (hits.Length < 3)
-        {
-            MoveDirection.y = -1f;
-        }
+        if (hits.Length < 3) MoveDirection.y = -1f;
 
         playerCTRL.Move(movement + MoveDirection);
         characterSkill();
@@ -77,8 +74,9 @@ public class PlayerControl : MonoBehaviour
     {
         if (isSkillReady)
         {
-            isSkillReady = false;
             Debug.Log("스킬 사용");
+            isSkillReady = false;
+            is_casting = true;
             float distance = 10f;
             float distance_clamped = distance;
             Vector3 destination;
@@ -95,6 +93,8 @@ public class PlayerControl : MonoBehaviour
                 }
             }
             transform.position = destination_output;
+            yield return new WaitForSeconds(0.2f);
+            is_casting = false;
         }
         yield return null;
     }
@@ -103,14 +103,17 @@ public class PlayerControl : MonoBehaviour
     {
         if (isSkillReady)
         {
-            isSkillReady = false;
             Debug.Log("스킬 사용");
+            isSkillReady = false;
+            is_casting = true;
             float repair_dinstance = 5f;
             int repair_radius = 5;
 
             Map_Generator map_generator = GameObject.Find("Map_Generator").GetComponent<Map_Generator>();
             Vector2Int index = map_generator.Position_To_Index(transform.position + transform.forward * repair_dinstance);
             map_generator.Repair_Floor(index, repair_radius);
+            yield return new WaitForSeconds(0.5f);
+            is_casting = false;
         }
         yield return null;
     }
@@ -119,8 +122,8 @@ public class PlayerControl : MonoBehaviour
     {
         if (isSkillReady)
         {
-            isSkillReady = false;
             Debug.Log("스킬 사용");
+            isSkillReady = false;
             float increase = 0.1f;
 
             while (gameObject.GetComponent<Transform>().localScale.x < 14f)
@@ -149,7 +152,6 @@ public class PlayerControl : MonoBehaviour
     private IEnumerator Cooltimer_co()
     {
         yield return new WaitForSeconds(cooltime);
-
         isSkillReady = true;
         Debug.Log("스킬 사용 가능");
     }
