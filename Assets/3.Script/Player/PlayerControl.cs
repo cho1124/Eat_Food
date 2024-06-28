@@ -9,6 +9,11 @@ public class PlayerControl : MonoBehaviour
     public CharacterController playerCTRL;
     public CharacterType characterType;
 
+<<<<<<< Updated upstream
+=======
+    
+
+>>>>>>> Stashed changes
     private bool isSkillReady = true;
     private Vector3 MoveDirection = Vector3.zero;
 
@@ -18,11 +23,10 @@ public class PlayerControl : MonoBehaviour
         playerCTRL = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         InputHandler();
-        //GRAVITY();
+        GRAVITY();
         //transform.position.Set(transform.position.x, 1f, transform.position.z);
     }
 
