@@ -518,13 +518,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee525141048d0914e89734b2b6255f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obsPref: {fileID: 6837605333250013574, guid: 759a6ae0ab8ff0846a728c8e8f52c6b7, type: 3}
   instance: {fileID: 948269873}
-  canISpawn: 0
-  xPos: 0
-  zPos: 0
+  food_prefabs:
+  - {fileID: 6837605333250013574, guid: 759a6ae0ab8ff0846a728c8e8f52c6b7, type: 3}
   SpawnInterval: 0.5
-  ObjRotateSpeed: 300
+  canISpawn: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,8 +1781,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cube_original: {fileID: 5525376088913530753, guid: 1f2fdf29e7111da40b0fb20154edbcdf, type: 3}
   map_size: 100
-  map_scale: 0
   cube_size: 0.5
+  map_width_get: 0
 --- !u!4 &2082983592
 Transform:
   m_ObjectHideFlags: 0

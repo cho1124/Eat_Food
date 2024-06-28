@@ -4,78 +4,78 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject obsPref;
-
     public  ObstacleSpawner instance;
-    public Queue<GameObject> o_queue = new Queue<GameObject>();
 
-    public bool canISpawn = false;
-    
-    public float xPos;
-    public float zPos;
-    private Vector3 randomVector;
-    private Vector3 randomScale;
+    [SerializeField] private List<GameObject> food_prefabs;
+    private List<GameObject> food_list = new List<GameObject>();
     public float SpawnInterval = 1f;
-    public float ObjRotateSpeed = 3f;
+    public bool canISpawn = false;
+    private int active_count = 0;
 
-    private float map_width;
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        map_width = GameObject.Find("Map_Generator").GetComponent<Map_Generator>().map_width_get;
+        
         instance = this;
         canISpawn = true;
+
+        //다른 종류의 음식 추가할 때는 밑에 for문에서 food_prefabs의 인덱스만 바꿔서 복붙하면 됩니당
         for(int i = 0; i < 10; i++)
         {
-            GameObject obs = Instantiate(obsPref, this.gameObject.transform);
-            o_queue.Enqueue(obs);
+            GameObject obs = Instantiate(food_prefabs[0], this.gameObject.transform);
+            food_list.Add(obs);
             obs.SetActive(false);
         }
 
         StartCoroutine(ObsSpawn());
     }
 
-    public GameObject GetQueue()
+    public GameObject List_Active_True()
     {
-        GameObject obs = o_queue.Dequeue();
-        obs.SetActive(true);
-
-        return obs;
+        int index;
+        while (true)
+        {
+            index = Random.Range(0, food_list.Count);
+            if(!food_list[index].activeSelf)
+            {
+                active_count++;
+                food_list[index].SetActive(true);
+                return food_list[index];
+            }
+        }
     }
 
-    public void InsertQueue(GameObject p_object)
+    public void List_Active_False(GameObject food)
     {
-        o_queue.Enqueue(p_object);
-        p_object.SetActive(false);
+        active_count--;
+        int index = food_list.IndexOf(food);
+        food_list[index].SetActive(false);
     }
 
     IEnumerator ObsSpawn()
     {
-        while(canISpawn)
+        float map_width = GameObject.Find("Map_Generator").GetComponent<Map_Generator>().map_width_get;
+        Vector3 randomVector;
+        Vector3 randomScale;
+        float xPos;
+        float zPos;
+        float scale;
+
+        while (canISpawn)
         {
-            if(o_queue.Count!=0)
+            if(food_list.Count!=0 && active_count != food_list.Count)
             {
                 xPos = Random.Range(-(map_width / 2), (map_width / 2));
                 zPos = Random.Range(-(map_width / 2), (map_width / 2));
                 randomVector = new Vector3(xPos, 30, zPos);
-                GameObject obs = GetQueue();
-                obs.transform.position =  randomVector;
 
-                var tmp = Random.Range(0.5f, 3f);
-                randomScale = new Vector3(tmp, tmp, tmp);
+                scale = Random.Range(0.5f, 3f);
+                randomScale = new Vector3(scale, scale, scale);
+                
+                GameObject obs = List_Active_True();
+                obs.transform.position =  randomVector;
                 obs.transform.localScale = randomScale;
             }
             yield return new WaitForSeconds(SpawnInterval);
         }
     }
-
-    // Update is called once per frame
-    /*
-    void Update()
-    {
-        
-    }*/
 }

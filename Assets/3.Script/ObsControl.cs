@@ -4,24 +4,25 @@ using UnityEngine;
 
 public class ObsControl : MonoBehaviour
 {
-    public ObstacleSpawner obSpawner;
-    public Rigidbody ob_r;
-    public float rotateSpeed;
-    public float up;
+    private ObstacleSpawner obSpawner;
+    private Rigidbody ob_r;
+
+    [SerializeField] private float rotateSpeed;
+    private float up;
 
     private void OnEnable()
     {
         obSpawner = FindObjectOfType<ObstacleSpawner>();
         ob_r = GetComponent<Rigidbody>();
         ob_r.velocity = Vector3.zero;
-        rotateSpeed = obSpawner.ObjRotateSpeed;
-        
     }
     private void Update()
     {
         //ob_r.AddTorque(0, 10f, 0);
 
         transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
+
+        if (transform.position.y < -30) obSpawner.instance.List_Active_False(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -43,6 +44,6 @@ public class ObsControl : MonoBehaviour
                 colliders[i].gameObject.GetComponent<Cube_Control>().Cube_Collapse(1);
             }
         }
-        obSpawner.instance.InsertQueue(gameObject);
+        obSpawner.instance.List_Active_False(gameObject);
     }
 }
