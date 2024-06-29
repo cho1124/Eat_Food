@@ -21,7 +21,9 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         playerCTRL = GetComponent<CharacterController>();
-        
+        is_dead = false;
+
+
     }
 
     void Update()
@@ -29,9 +31,19 @@ public class PlayerControl : MonoBehaviour
         if(!is_casting) InputHandler();
         if (transform.position.y <= -20f)
         {
-            is_dead = true;
-            Debug.Log("Player is Dead!");
-            ButtonControl.instance.ShowGameOverPanel();
+            if(!is_dead)
+            {
+                is_dead = true;
+                //GameManager.instance.playerinfo.Add(new PlayerInfo("Player1", "a", 100)); // 예시 데이터 추가
+                GameManager.instance.SavePlayerData("asd", name);
+                GameManager.instance.SavePlayerDataToJson();
+                Debug.Log("Player is Dead!");
+                ButtonControl.instance.ShowGameOverPanel();
+                GameManager.instance.LoadPlayerDataFromJson();
+            }
+
+
+            
             //Time.timeScale = 0f;
             
         }

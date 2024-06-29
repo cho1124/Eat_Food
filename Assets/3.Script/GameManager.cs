@@ -83,6 +83,12 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void SavePlayerData(string playerName, string characterType)
+    {
+        playerinfo.Add(new PlayerInfo(playerName, characterType, playerScore));
+    }
+
+
     public void SavePlayerDataToJson()
     {
         PlayerDataListWrapper wrapper = new PlayerDataListWrapper(playerinfo);
