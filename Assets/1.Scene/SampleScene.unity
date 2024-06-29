@@ -2648,7 +2648,6 @@ GameObject:
   - component: {fileID: 1611463325}
   - component: {fileID: 1611463324}
   - component: {fileID: 1611463323}
-  - component: {fileID: 1611463322}
   m_Layer: 5
   m_Name: EnterNameButton
   m_TagString: Untagged
@@ -2676,25 +2675,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -250}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1611463322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1611463320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79c6061ff2f2eca44abce09ca7f50ccc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: []
-  currentScene:
-    m_Handle: 0
-  info: {fileID: 0}
-  sct: {fileID: 0}
-  playerNameInput: {fileID: 303277727}
-  playerName: 
 --- !u!114 &1611463323
 MonoBehaviour:
   m_ObjectHideFlags: 0

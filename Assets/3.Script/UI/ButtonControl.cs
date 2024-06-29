@@ -51,7 +51,7 @@ public class ButtonControl : MonoBehaviour
 
         Debug.Log("ButtonControl");
 
-        sct = GameObject.Find("TransitionImage").GetComponent<SceneTransition>();
+       // sct = GameObject.Find("TransitionImage").GetComponent<SceneTransition>();
 
     }
 
