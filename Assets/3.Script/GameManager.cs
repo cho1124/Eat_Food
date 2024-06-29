@@ -108,6 +108,7 @@ public class GameManager : MonoBehaviour
             PlayerDataListWrapper wrapper = JsonUtility.FromJson<PlayerDataListWrapper>(jsonData);
             playerinfo = wrapper.playerDataList;
         }
+      
     }
 
     public void AddScore(int score)
@@ -115,6 +116,10 @@ public class GameManager : MonoBehaviour
         playerScore += score;
     }
 
+    public List<PlayerInfo> GetPlayerInfos()
+    {
+        return playerinfo;
+    }
 }
 
 [System.Serializable]

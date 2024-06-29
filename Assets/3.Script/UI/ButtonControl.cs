@@ -20,6 +20,7 @@ public class ButtonControl : MonoBehaviour
     public string playerName;
 
 
+    private GameObject EnterYourName_obj;
     private GameObject GameOver_Obj;
 
 
@@ -124,15 +125,24 @@ public class ButtonControl : MonoBehaviour
         Button leftButton = GameObject.Find("LeftButton").GetComponent<Button>();
         Button rightButton = GameObject.Find("RightButton").GetComponent<Button>();
         Button confirmButton = GameObject.Find("ConfirmButton").GetComponent<Button>();
+        //Button returnToTitleButton = GameObject.Find("ReturnToTitleButton").GetComponent<Button>();
 
         leftButton.onClick.AddListener(LeftButton);
         rightButton.onClick.AddListener(RightButton);
         confirmButton.onClick.AddListener(ConfirmButton);
+        //returnToTitleButton.onClick.AddListener(ReturnToTitleButton);
     }
 
-
+    
     private void InitializeSampleScene()
     {
+        EnterYourName_obj = GameObject.Find("EnterYourName");
+        Button enterYourNameButton = GameObject.Find("EnterNameButton").GetComponent<Button>();
+        enterYourNameButton.onClick.AddListener(EnterNameButton);
+        EnterYourName_obj.SetActive(false);
+        
+
+
         GameOver_Obj = GameObject.Find("GameOverPanel");
         Button retryButton = GameObject.Find("RetryButton").GetComponent<Button>();
         Button returnToTitleButton = GameObject.Find("ReturnToTitleButton").GetComponent<Button>();
@@ -140,7 +150,12 @@ public class ButtonControl : MonoBehaviour
 
         retryButton.onClick.AddListener(RetryButton);
         returnToTitleButton.onClick.AddListener(ReturnToTitleButton);
+
+
+
+
     }
+
 
     private void InitializeTitleScene()
     {
@@ -282,6 +297,19 @@ public class ButtonControl : MonoBehaviour
         }
     }
 
+    public void ShowEnterNamePanel()
+    {
+        if (EnterYourName_obj != null)
+        {
+            EnterYourName_obj.SetActive(true);
+            
+        }
+        else
+        {
+            Debug.LogError("GameOverPanel not found!");
+        }
+    }
+
 
 
     public void RetryButton()
@@ -294,7 +322,7 @@ public class ButtonControl : MonoBehaviour
     public void ReturnToTitleButton()
     {
         sct.SceneTrans("Title");
-        SceneManager.LoadScene("Title");
+        //SceneManager.LoadScene("Title");
     }
 
 
@@ -302,6 +330,7 @@ public class ButtonControl : MonoBehaviour
     public void EnterNameButton()
     {
         playerName = playerNameInput.GetComponent<TMP_InputField>().text;
+        GameManager.instance.SavePlayerData(playerName, player[GameManager.instance.selectedCharacter].name);
 
         Debug.Log(playerName);
 

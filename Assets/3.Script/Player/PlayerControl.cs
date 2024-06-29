@@ -35,10 +35,13 @@ public class PlayerControl : MonoBehaviour
             {
                 is_dead = true;
                 //GameManager.instance.playerinfo.Add(new PlayerInfo("Player1", "a", 100)); // 예시 데이터 추가
-                GameManager.instance.SavePlayerData("asd", name);
-                GameManager.instance.SavePlayerDataToJson();
+                //GameManager.instance.SavePlayerData("asd", name);
+                //GameManager.instance.SavePlayerDataToJson();
+
+               
                 Debug.Log("Player is Dead!");
-                ButtonControl.instance.ShowGameOverPanel();
+                //ButtonControl.instance.ShowGameOverPanel();
+                ButtonControl.instance.ShowEnterNamePanel();
                 GameManager.instance.LoadPlayerDataFromJson();
             }
 
