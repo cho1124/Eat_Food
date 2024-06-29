@@ -16,7 +16,22 @@ public class PlayerInfo
     public PlayerInfo(string playerName, string characterName, int score)
     {
         this.playerName = playerName;
-        this.characterName = characterName;
+
+        if(characterName == "0")
+        {
+            this.characterName = "마술사 유령";
+        }
+        else if(characterName == "1")
+        {
+            this.characterName = "바이킹 유령";
+        }
+        else if(characterName == "2")
+        {
+            this.characterName = "빌더 유령";
+        }
+
+
+        //this.characterName = characterName;
         this.score = score;
     }
 }
