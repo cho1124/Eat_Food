@@ -21,6 +21,7 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         playerCTRL = GetComponent<CharacterController>();
+        transform.position = new Vector3(30f, 0f, 30f);
         is_dead = false;
 
 
