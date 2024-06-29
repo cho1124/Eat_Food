@@ -56,7 +56,7 @@ public class ObstacleSpawner : MonoBehaviour
         explosive_particle_clone.gameObject.SetActive(true);
     }
 
-    public void List_Active_False_ToPlayer(GameObject food)
+    public void List_Active_False_By_Player(GameObject food)
     {
         active_count--;
         int index = food_list.IndexOf(food);

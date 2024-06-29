@@ -15,5 +15,5 @@ MonoBehaviour:
   character_prefab: {fileID: 6094296898962763260, guid: 7b624465dd52b3049bafb5ea26059b92, type: 3}
   character_name: C
   CharacterType: 2
-  moveSpeed: 30
+  moveSpeed: 15
   cooltime: 5

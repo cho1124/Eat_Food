@@ -252,7 +252,7 @@ public class ButtonControl : MonoBehaviour
     {
         if (GameManager.instance.selectedCharacter == 0)
         {
-            info.text = "마술사 유령\n\n마술사 유령입니다\n슬라이딩을 할 수 있습니다";
+            info.text = "마술사 유령\n\n마술사 유령입니다\n텔레포트를 할 수 있습니다";
 
         }
         else if (GameManager.instance.selectedCharacter == 1)

@@ -9,14 +9,12 @@ public class PlayerControl : MonoBehaviour
     public float cooltime;
     public bool is_dead = false;
     
-
-
     private CharacterController playerCTRL;
     private bool isSkillReady = true;
     private bool is_casting = false;
     private Vector3 MoveDirection = Vector3.zero;
     private Animator animator;
-   
+    private GameObject skill_effect;
 
     void Start()
     {
@@ -24,6 +22,8 @@ public class PlayerControl : MonoBehaviour
         
         is_dead = false;
         animator = GetComponent<Animator>();
+
+        skill_effect = transform.GetChild(0).gameObject;
 
         float x = GameObject.Find("Map_Generator").GetComponent<Map_Generator>().map_width_get / 2f;
         transform.position = new Vector3(x, 2, x);
@@ -48,12 +48,9 @@ public class PlayerControl : MonoBehaviour
                 GameManager.instance.LoadPlayerDataFromJson();
             }
 
-
-            
             //Time.timeScale = 0f;
             
         }
-        
     }
 
     public void InputHandler()
@@ -68,7 +65,6 @@ public class PlayerControl : MonoBehaviour
 
         // 애니메이터의 Speed 파라미터에 적용
         animator.SetFloat("Speed", speed);
-
 
         if (inputDirection.magnitude > 0.1f)
         {
@@ -93,15 +89,15 @@ public class PlayerControl : MonoBehaviour
             {
                 case CharacterType.매지션:
                     StartCoroutine(Teleport_Co());
-                    StartCoroutine(Cooltimer_co(cooltime));
+                    StartCoroutine(Cooltimer_co());
                     break;
                 case CharacterType.바이킹:
                     StartCoroutine(MakeBigger_co());
-                    StartCoroutine(Cooltimer_co(cooltime));
+                    StartCoroutine(Cooltimer_co());
                     break;
                 case CharacterType.빌더:
                     StartCoroutine(Repair_Floor_Co());
-                    StartCoroutine(Cooltimer_co(cooltime));
+                    StartCoroutine(Cooltimer_co());
                     break;
             }
         }
@@ -111,7 +107,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (isSkillReady)
         {
-            Debug.Log("스킬 사용");
+            Instantiate(skill_effect, transform.position, Quaternion.identity).gameObject.SetActive(true);
             isSkillReady = false;
             is_casting = true;
             float distance = 10f;
@@ -130,6 +126,7 @@ public class PlayerControl : MonoBehaviour
                 }
             }
             transform.position = destination_output;
+            Instantiate(skill_effect, transform.position, Quaternion.identity).gameObject.SetActive(true);
             yield return new WaitForSeconds(0.2f);
             is_casting = false;
         }
@@ -140,7 +137,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (isSkillReady)
         {
-            Debug.Log("스킬 사용");
+            Instantiate(skill_effect, transform.position, Quaternion.identity).gameObject.SetActive(true);
             isSkillReady = false;
             is_casting = true;
             float repair_dinstance = 5f;
@@ -159,7 +156,6 @@ public class PlayerControl : MonoBehaviour
     {
         if (isSkillReady)
         {
-            Debug.Log("스킬 사용");
             isSkillReady = false;
             float increase = 0.1f;
 
@@ -186,32 +182,25 @@ public class PlayerControl : MonoBehaviour
     }
 
     //스킬 구현 끝에 쿨타임 넣고싶으면 이 코루틴을 쓰면 됩니다
-    private IEnumerator Cooltimer_co(float coolTime)
+    private IEnumerator Cooltimer_co()
     {
-        //yield return new WaitForSeconds(coolTime);
-        
-        
-
-        while (coolTime > 1.0f)
+        float cooltime_remain = 0f;
+        while (cooltime_remain < cooltime)
         { 
-            coolTime -= Time.deltaTime;
-            ButtonControl.instance.CoolTime_image.fillAmount = (1.0f / coolTime); 
+            ButtonControl.instance.CoolTime_image.fillAmount = (cooltime_remain / cooltime);
+            cooltime_remain += Time.deltaTime;
             yield return new WaitForFixedUpdate(); 
         }
         Debug.Log("스킬 사용 가능");
+        ButtonControl.instance.CoolTime_image.fillAmount = 1f;
         isSkillReady = true;
-
-
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("음식 체크");
         if (other.CompareTag("Food"))
         {
-            Debug.Log("음식 처리");
-            GameObject.Find("ObstacleSpawner").GetComponent<ObstacleSpawner>().instance.List_Active_False_ToPlayer(other.gameObject);
+            GameObject.Find("ObstacleSpawner").GetComponent<ObstacleSpawner>().instance.List_Active_False_By_Player(other.gameObject);
             GameManager.instance.AddScore(10);
         }
     }
