@@ -97,28 +97,6 @@ public class ButtonControl : MonoBehaviour
                 Debug.LogError("Player" + i.ToString() + " not found!");
             }
         }
-
-        int selectedCharacter = GameManager.instance.selectedCharacter;
-
-        foreach (var obj in player)
-        {
-            if (obj != null)
-            {
-                obj.SetActive(false);
-            }
-        }
-
-        // 선택된 캐릭터 번호에 해당하는 오브젝트를 활성화
-        if (selectedCharacter >= 0 && selectedCharacter < player.Length)
-        {
-            player[selectedCharacter]?.SetActive(true);
-        }
-        else
-        {
-            Debug.LogError("Invalid selected character number: " + selectedCharacter);
-        }
-
-
         ShowCharInfo();
 
         Button leftButton = GameObject.Find("LeftButton").GetComponent<Button>();
