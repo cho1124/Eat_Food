@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using System.Collections;
@@ -11,11 +12,14 @@ public class ButtonControl : MonoBehaviour
     public TextMeshProUGUI info;
     public SceneTransition sct;
 
+    // 플레이어 이름 넣는 칸
+    public TMP_InputField playerNameInput;
+    public string playerName;
 
-    //
-    // SceneTransition
-    //
-  
+
+
+    
+    // 씬 트렌지션할때 잠깐 대기시키는 코루틴
     private IEnumerator Scene_Transition_co()
     {
 
@@ -63,6 +67,8 @@ public class ButtonControl : MonoBehaviour
         Application.Quit();
 #endif
     }
+    //-----------------------------titleEnd---------------------------------------//
+
 
     //-----------------------------------------SceneChar--------------------------------------//
 
@@ -171,8 +177,15 @@ public class ButtonControl : MonoBehaviour
         sct.SceneTrans("Title");
         SceneManager.LoadScene("Title");
     }
+
+
+
     public void EnterNameButton()
     {
+        playerName = playerNameInput.GetComponent<TMP_InputField>().text;
+        
+        Debug.Log(playerName);
+
         GameObject gameover = GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject;//.gameObject.SetActive(true);//GameObject.Find("GameOverPanel");
         GameObject enterYourName = GameObject.Find("EnterYourName");
         gameover.SetActive(true);
