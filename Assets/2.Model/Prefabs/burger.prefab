@@ -11,9 +11,12 @@ GameObject:
   - component: {fileID: 1966843592999517810}
   - component: {fileID: 1957951704754020702}
   - component: {fileID: 1948177268162501598}
-  - component: {fileID: 1996104599329353162}
   - component: {fileID: 1972489587776541779}
+<<<<<<< Updated upstream
   - component: {fileID: 1972489587776541778}
+=======
+  - component: {fileID: 1996104599329353162}
+>>>>>>> Stashed changes
   m_Layer: 0
   m_Name: burger
   m_TagString: Untagged
@@ -84,19 +87,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1996104599329353162
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1972489587776541776}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.001, y: 0.001, z: 0.001}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1972489587776541779
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -113,13 +103,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+<<<<<<< Updated upstream
 --- !u!114 &1972489587776541778
 MonoBehaviour:
+=======
+--- !u!65 &1996104599329353162
+BoxCollider:
+>>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972489587776541776}
+<<<<<<< Updated upstream
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e2b3c9dd7b1dd448ac01795a3ca4f7f, type: 3}
@@ -129,3 +125,11 @@ MonoBehaviour:
   ob_r: {fileID: 0}
   rotateSpeed: 3
   up: 0
+=======
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.001, y: 0.001, z: 0.001}
+  m_Center: {x: 0, y: 0, z: 0}
+>>>>>>> Stashed changes
