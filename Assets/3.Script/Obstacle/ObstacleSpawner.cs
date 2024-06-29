@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public  ObstacleSpawner instance;
+    public ObstacleSpawner instance;
 
     [SerializeField] private ParticleSystem explosive_particle_original;
     private ParticleSystem explosive_particle_clone;
@@ -19,8 +19,8 @@ public class ObstacleSpawner : MonoBehaviour
         instance = this;
         canISpawn = true;
 
-        //´Ù¸¥ Á¾·ùÀÇ À½½Ä Ãß°¡ÇÒ ¶§´Â ¹Ø¿¡ for¹®¿¡¼­ food_prefabsÀÇ ÀÎµ¦½º¸¸ ¹Ù²ã¼­ º¹ºÙÇÏ¸é µË´Ï´ç
-        for(int i = 0; i < 10; i++)
+        //ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø¿ï¿½ forï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ food_prefabsï¿½ï¿½ ï¿½Îµï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²ã¼­ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Ë´Ï´ï¿½
+        for (int i = 0; i < 10; i++)
         {
             for (int j = 0; j < food_prefabs.Count; j++)
             {
@@ -39,7 +39,7 @@ public class ObstacleSpawner : MonoBehaviour
         while (true)
         {
             index = Random.Range(0, food_list.Count);
-            if(!food_list[index].activeSelf)
+            if (!food_list[index].activeSelf)
             {
                 active_count++;
                 food_list[index].SetActive(true);
@@ -76,7 +76,7 @@ public class ObstacleSpawner : MonoBehaviour
 
         while (canISpawn)
         {
-            if(food_list.Count!=0 && active_count != food_list.Count)
+            if (food_list.Count != 0 && active_count != food_list.Count)
             {
                 xPos = Random.Range(0, map_width);
                 zPos = Random.Range(0, map_width);
@@ -84,9 +84,9 @@ public class ObstacleSpawner : MonoBehaviour
 
                 scale = Random.Range(0.5f, 3f);
                 randomScale = new Vector3(scale, scale, scale);
-                
+
                 GameObject obs = List_Active_True();
-                obs.transform.position =  randomVector;
+                obs.transform.position = randomVector;
                 obs.transform.localScale = randomScale;
             }
             yield return new WaitForSeconds(SpawnInterval);

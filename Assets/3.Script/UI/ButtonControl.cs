@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
@@ -15,7 +15,7 @@ public class ButtonControl : MonoBehaviour
     public TextMeshProUGUI info;
     public SceneTransition sct;
 
-    // ÇÃ·¹ÀÌ¾î ÀÌ¸§ ³Ö´Â Ä­
+    // í”Œë ˆì´ì–´ ì´ë¦„ ë„£ëŠ” ì¹¸
     public TMP_InputField playerNameInput;
     public string playerName;
 
@@ -23,7 +23,7 @@ public class ButtonControl : MonoBehaviour
     private GameObject GameOver_Obj;
 
 
-    // ¾À Æ®·»Áö¼ÇÇÒ¶§ Àá±ñ ´ë±â½ÃÅ°´Â ÄÚ·çÆ¾
+    // ì”¬ íŠ¸ë Œì§€ì…˜í• ë•Œ ì ê¹ ëŒ€ê¸°ì‹œí‚¤ëŠ” ì½”ë£¨í‹´
     private IEnumerator Scene_Transition_co()
     {
 
@@ -37,11 +37,11 @@ public class ButtonControl : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject); // ¾ÀÀÌ ¹Ù²î¾îµµ ÀÌ ¿ÀºêÁ§Æ®¸¦ ÆÄ±«ÇÏÁö ¾ÊÀ½
+            DontDestroyOnLoad(gameObject); // ì”¬ì´ ë°”ë€Œì–´ë„ ì´ ì˜¤ë¸Œì íŠ¸ë¥¼ íŒŒê´´í•˜ì§€ ì•ŠìŒ
         }
         else if (instance != this)
         {
-            Destroy(gameObject); // ÀÌ¹Ì ÀÎ½ºÅÏ½º°¡ Á¸ÀçÇÏ¸é ÀÌ ¿ÀºêÁ§Æ®¸¦ ÆÄ±«
+            Destroy(gameObject); // ì´ë¯¸ ì¸ìŠ¤í„´ìŠ¤ê°€ ì¡´ì¬í•˜ë©´ ì´ ì˜¤ë¸Œì íŠ¸ë¥¼ íŒŒê´´
         }
 
 
@@ -85,7 +85,7 @@ public class ButtonControl : MonoBehaviour
     {
         player = new GameObject[3];
 
-        // ºñÈ°¼ºÈ­µÈ ¿ÀºêÁ§Æ® Æ÷ÇÔÇÏ¿© ¸ğµç ¿ÀºêÁ§Æ® Ã£±â
+        // ë¹„í™œì„±í™”ëœ ì˜¤ë¸Œì íŠ¸ í¬í•¨í•˜ì—¬ ëª¨ë“  ì˜¤ë¸Œì íŠ¸ ì°¾ê¸°
         var allObjects = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.hideFlags == HideFlags.None).ToArray();
         info = GameObject.FindObjectOfType<TextMeshProUGUI>();
 
@@ -108,7 +108,7 @@ public class ButtonControl : MonoBehaviour
             }
         }
 
-        // ¼±ÅÃµÈ Ä³¸¯ÅÍ ¹øÈ£¿¡ ÇØ´çÇÏ´Â ¿ÀºêÁ§Æ®¸¦ È°¼ºÈ­
+
         if (selectedCharacter >= 0 && selectedCharacter < player.Length)
         {
             player[selectedCharacter]?.SetActive(true);
@@ -180,16 +180,16 @@ public class ButtonControl : MonoBehaviour
     {
         if (GameManager.instance.selectedCharacter == 0)
         {
-            info.text = "¸¶¼ú»ç À¯·É\n\n¸¶¼ú»ç À¯·ÉÀÔ´Ï´Ù\n½½¶óÀÌµùÀ» ÇÒ ¼ö ÀÖ½À´Ï´Ù";
+            info.text = "ë§ˆìˆ ì‚¬ ìœ ë ¹\n\në§ˆìˆ ì‚¬ ìœ ë ¹ì…ë‹ˆë‹¤\nìŠ¬ë¼ì´ë”©ì„ í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤";
 
         }
         else if (GameManager.instance.selectedCharacter == 1)
         {
-            info.text = "¹ÙÀÌÅ· À¯·É\n\n¹ÙÀÌÅ· À¯·ÉÀÔ´Ï´Ù\n¸öÀÇ Å©±â¸¦ Å°¿ï ¼ö ÀÖ½À´Ï´Ù";
+            info.text = "ë°”ì´í‚¹ ìœ ë ¹\n\në°”ì´í‚¹ ìœ ë ¹ì…ë‹ˆë‹¤\nëª¸ì˜ í¬ê¸°ë¥¼ í‚¤ìš¸ ìˆ˜ ìˆìŠµë‹ˆë‹¤";
         }
         else
         {
-            info.text = "ºô´õ À¯·É\n\nºô´õ À¯·ÉÀÔ´Ï´Ù\nÆÄ±«µÈ ºí·ÏÀ» Àç»ıÇÒ ¼ö ÀÖ½À´Ï´Ù";
+            info.text = "ë¹Œë” ìœ ë ¹\n\në¹Œë” ìœ ë ¹ì…ë‹ˆë‹¤\níŒŒê´´ëœ ë¸”ë¡ì„ ì¬ìƒí•  ìˆ˜ ìˆìŠµë‹ˆë‹¤";
         }
     }
 
