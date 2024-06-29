@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6625925455624527718, guid: 9e303adefdf43004a992db716b9c9d1c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6625925455624527721, guid: 9e303adefdf43004a992db716b9c9d1c, type: 3}
       propertyPath: m_Pivot.x
@@ -3485,6 +3485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedCharacter: 0
   playerScore: 0
+  playerinfo: []
 --- !u!4 &1789303503
 Transform:
   m_ObjectHideFlags: 0
@@ -4566,3 +4567,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverUI: {fileID: 715168516}
+  leaderboard: {fileID: 0}
