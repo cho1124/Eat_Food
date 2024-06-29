@@ -115,6 +115,10 @@ public class ObsControl : MonoBehaviour
         //음식이 플레이어랑 충돌했을때
         if(collider.CompareTag("Player"))
         {
+            obSpawner.instance.List_Active_False_ToPlayer(gameObject);
+            GameManager.instance.AddScore(10);
+            Debug.Log("scored!");
+
             //점수추가
         }
     }

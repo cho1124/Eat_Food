@@ -4,26 +4,38 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    private CharacterController playerCTRL;
     public CharacterType characterType;
     public float moveSpeed;
     public float cooltime;
+    public bool is_dead = false;
+    
 
+
+    private CharacterController playerCTRL;
     private bool isSkillReady = true;
     private bool is_casting = false;
     private Vector3 MoveDirection = Vector3.zero;
     private Animator animator;
-    public bool is_dead = false;
+   
 
     void Start()
     {
         playerCTRL = GetComponent<CharacterController>();
+        
     }
 
     void Update()
     {
         if(!is_casting) InputHandler();
-        if(transform.position.y <= -20f) is_dead = true;
+        if (transform.position.y <= -20f)
+        {
+            is_dead = true;
+            Debug.Log("Player is Dead!");
+            ButtonControl.instance.ShowGameOverPanel();
+            //Time.timeScale = 0f;
+            
+        }
+        
     }
 
     public void InputHandler()

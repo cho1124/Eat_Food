@@ -240,7 +240,6 @@ GameObject:
   - component: {fileID: 168710842}
   - component: {fileID: 168710841}
   - component: {fileID: 168710840}
-  - component: {fileID: 168710843}
   m_Layer: 5
   m_Name: RightButton
   m_TagString: Untagged
@@ -311,19 +310,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 168710841}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 168710843}
-        m_TargetAssemblyTypeName: ButtonControl, Assembly-CSharp
-        m_MethodName: RightButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &168710841
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,23 +349,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 168710838}
   m_CullTransparentMesh: 1
---- !u!114 &168710843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168710838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79c6061ff2f2eca44abce09ca7f50ccc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: []
-  currentScene:
-    m_Handle: 0
-  info: {fileID: 0}
-  sct: {fileID: 0}
 --- !u!1 &227489263
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,7 +361,6 @@ GameObject:
   - component: {fileID: 227489267}
   - component: {fileID: 227489266}
   - component: {fileID: 227489265}
-  - component: {fileID: 227489268}
   m_Layer: 5
   m_Name: ConfirmButton
   m_TagString: Untagged
@@ -462,19 +431,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 227489266}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 227489268}
-        m_TargetAssemblyTypeName: ButtonControl, Assembly-CSharp
-        m_MethodName: ConfirmButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &227489266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -513,23 +470,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227489263}
   m_CullTransparentMesh: 1
---- !u!114 &227489268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 227489263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79c6061ff2f2eca44abce09ca7f50ccc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: []
-  currentScene:
-    m_Handle: 0
-  info: {fileID: 0}
-  sct: {fileID: 0}
 --- !u!1 &345793339
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +552,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 4.067, y: -22.193, z: 0}
+--- !u!1 &481231442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 481231444}
+  - component: {fileID: 481231443}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &481231443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481231442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c6061ff2f2eca44abce09ca7f50ccc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: []
+  currentScene:
+    m_Handle: 0
+  info: {fileID: 0}
+  sct: {fileID: 0}
+  playerNameInput: {fileID: 0}
+  playerName: 
+--- !u!4 &481231444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481231442}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &637363048 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2280377301404584458, guid: 7b624465dd52b3049bafb5ea26059b92, type: 3}
@@ -1663,7 +1653,6 @@ GameObject:
   - component: {fileID: 1918861935}
   - component: {fileID: 1918861934}
   - component: {fileID: 1918861933}
-  - component: {fileID: 1918861936}
   m_Layer: 5
   m_Name: LeftButton
   m_TagString: Untagged
@@ -1734,19 +1723,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1918861934}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1918861936}
-        m_TargetAssemblyTypeName: ButtonControl, Assembly-CSharp
-        m_MethodName: LeftButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1918861934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1785,23 +1762,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1918861931}
   m_CullTransparentMesh: 1
---- !u!114 &1918861936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1918861931}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79c6061ff2f2eca44abce09ca7f50ccc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: []
-  currentScene:
-    m_Handle: 0
-  info: {fileID: 1485449264}
-  sct: {fileID: 0}
 --- !u!1 &1225974069451567
 GameObject:
   m_ObjectHideFlags: 0

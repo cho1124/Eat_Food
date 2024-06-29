@@ -7,6 +7,9 @@ using TMPro;
 
 public class ButtonControl : MonoBehaviour
 {
+    public static ButtonControl instance;
+
+
     public GameObject[] player;
     public Scene currentScene;
     public TextMeshProUGUI info;
@@ -17,8 +20,9 @@ public class ButtonControl : MonoBehaviour
     public string playerName;
 
 
+    private GameObject GameOver_Obj;
 
-    
+
     // 씬 트렌지션할때 잠깐 대기시키는 코루틴
     private IEnumerator Scene_Transition_co()
     {
@@ -30,27 +34,123 @@ public class ButtonControl : MonoBehaviour
   
     private void Awake()
     {
-        sct = GameObject.Find("TransitionImage").GetComponent<SceneTransition>() ;
-        currentScene = SceneManager.GetActiveScene();
-        if (currentScene.name == "SelectChar")
+        if (instance == null)
         {
-            player = new GameObject[3];
+            instance = this;
+            DontDestroyOnLoad(gameObject); // 씬이 바뀌어도 이 오브젝트를 파괴하지 않음
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject); // 이미 인스턴스가 존재하면 이 오브젝트를 파괴
+        }
 
-            // 비활성화된 오브젝트 포함하여 모든 오브젝트 찾기
-            var allObjects = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.hideFlags == HideFlags.None).ToArray();
-            info = GameObject.FindObjectOfType<TextMeshProUGUI>();
 
-            for (int i = 1; i < 4; i++)
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+
+        Debug.Log("ButtonControl");
+
+        sct = GameObject.Find("TransitionImage").GetComponent<SceneTransition>() ;
+        //InitializeSceneButtons(SceneManager.GetActiveScene());
+        //if (currentScene.name == "SelectChar")
+        //{
+        //    player = new GameObject[3];
+        //
+        //    // 비활성화된 오브젝트 포함하여 모든 오브젝트 찾기
+        //    var allObjects = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.hideFlags == HideFlags.None).ToArray();
+        //    info = GameObject.FindObjectOfType<TextMeshProUGUI>();
+        //
+        //    for (int i = 1; i < 4; i++)
+        //    {
+        //        player[i - 1] = allObjects.FirstOrDefault(obj => obj.name == "Player" + i.ToString());
+        //        if (player[i - 1] == null)
+        //        {
+        //            Debug.LogError("Player" + i.ToString() + " not found!");
+        //        }
+        //    }
+        //}
+        //ShowCharInfo();
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        sct = GameObject.Find("TransitionImage")?.GetComponent<SceneTransition>();
+
+        InitializeSceneButtons(scene);
+    }
+
+    private void InitializeSceneButtons(Scene scene)
+    {
+        if (scene.name == "SelectChar")
+        {
+            InitializeSelectCharScene();
+        }
+        else if (scene.name == "SampleScene")
+        {
+            Debug.Log("Start");
+            InitializeSampleScene();
+            
+        }
+        else if (scene.name == "Title")
+        {
+            Debug.Log("title");
+           InitializeTitleScene();
+            
+        }
+    }
+
+    private void InitializeSelectCharScene()
+    {
+        player = new GameObject[3];
+
+        // 비활성화된 오브젝트 포함하여 모든 오브젝트 찾기
+        var allObjects = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.hideFlags == HideFlags.None).ToArray();
+        info = GameObject.FindObjectOfType<TextMeshProUGUI>();
+
+        for (int i = 1; i < 4; i++)
+        {
+            player[i - 1] = allObjects.FirstOrDefault(obj => obj.name == "Player" + i.ToString());
+            if (player[i - 1] == null)
             {
-                player[i - 1] = allObjects.FirstOrDefault(obj => obj.name == "Player" + i.ToString());
-                if (player[i - 1] == null)
-                {
-                    Debug.LogError("Player" + i.ToString() + " not found!");
-                }
+                Debug.LogError("Player" + i.ToString() + " not found!");
             }
         }
         ShowCharInfo();
+
+        Button leftButton = GameObject.Find("LeftButton").GetComponent<Button>();
+        Button rightButton = GameObject.Find("RightButton").GetComponent<Button>();
+        Button confirmButton = GameObject.Find("ConfirmButton").GetComponent<Button>();
+
+        leftButton.onClick.AddListener(LeftButton);
+        rightButton.onClick.AddListener(RightButton);
+        confirmButton.onClick.AddListener(ConfirmButton);
     }
+
+
+    private void InitializeSampleScene()
+    {
+        GameOver_Obj = GameObject.Find("GameOverPanel");
+        Button retryButton = GameObject.Find("RetryButton").GetComponent<Button>();
+        Button returnToTitleButton = GameObject.Find("ReturnToTitleButton").GetComponent<Button>();
+        GameOver_Obj.SetActive(false);
+
+        retryButton.onClick.AddListener(RetryButton);
+        returnToTitleButton.onClick.AddListener(ReturnToTitleButton);
+    }
+
+    private void InitializeTitleScene()
+    {
+        
+        Button playButton = GameObject.Find("PlayButton").GetComponent<Button>();
+        Button exitButton = GameObject.Find("ExitButton").GetComponent<Button>();
+
+        playButton.onClick.AddListener(PlayButton);
+        exitButton.onClick.AddListener(ExitButton);
+    }
+
+
+
+
     //----------------------------title--------------------------------------//
 
     public void PlayButton()
@@ -165,6 +265,20 @@ public class ButtonControl : MonoBehaviour
 
 
     //------------------------------------GameOverUIButton----------------------------------//
+
+    public void ShowGameOverPanel()
+    {
+        if (GameOver_Obj != null)
+        {
+            GameOver_Obj.SetActive(true);
+        }
+        else
+        {
+            Debug.LogError("GameOverPanel not found!");
+        }
+    }
+
+
 
     public void RetryButton()
     {

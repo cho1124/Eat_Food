@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,7 +25,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
     public int selectedCharacter = 0;
+
     private string filePath;
+    private int playerScore;
     private List<PlayerInfo> playerinfo = new List<PlayerInfo>();
 
 
@@ -47,6 +50,12 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+    private void Start()
+    {
+        Debug.Log("Scene Start");
+    }
+
 
     private void Update()
     {
@@ -71,10 +80,10 @@ public class GameManager : MonoBehaviour
     private void LoadAll()
     {
         
-        SceneManager.LoadScene(0);
+        
     }
 
-    void SavePlayerDataToJson()
+    public void SavePlayerDataToJson()
     {
         PlayerDataListWrapper wrapper = new PlayerDataListWrapper(playerinfo);
         string jsonData = JsonUtility.ToJson(wrapper);
@@ -84,7 +93,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    void LoadPlayerDataFromJson()
+    public void LoadPlayerDataFromJson()
     {
         string path = Path.Combine(Application.persistentDataPath, "playerData.json");
         if (File.Exists(path))
@@ -94,6 +103,12 @@ public class GameManager : MonoBehaviour
             playerinfo = wrapper.playerDataList;
         }
     }
+
+    public void AddScore(int  score)
+    {
+        playerScore += score;
+    }
+
 }
 
 [System.Serializable]

@@ -57,6 +57,14 @@ public class ObstacleSpawner : MonoBehaviour
         explosive_particle_clone.gameObject.SetActive(true);
     }
 
+    public void List_Active_False_ToPlayer(GameObject food)
+    {
+        active_count--;
+        int index = food_list.IndexOf(food);
+        food_list[index].SetActive(false);
+    }
+
+
     IEnumerator ObsSpawn()
     {
         float map_width = GameObject.Find("Map_Generator").GetComponent<Map_Generator>().map_width_get;
