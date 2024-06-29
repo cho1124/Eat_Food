@@ -19,7 +19,6 @@ public class ObstacleSpawner : MonoBehaviour
         instance = this;
         canISpawn = true;
 
-        //�ٸ� ������ ���� �߰��� ���� �ؿ� for������ food_prefabs�� �ε����� �ٲ㼭 �����ϸ� �˴ϴ�
         for (int i = 0; i < 10; i++)
         {
             for (int j = 0; j < food_prefabs.Count; j++)
