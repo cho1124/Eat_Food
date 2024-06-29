@@ -133,6 +133,7 @@ public class ButtonControl : MonoBehaviour
         //returnToTitleButton.onClick.AddListener(ReturnToTitleButton);
     }
 
+
     
     private void InitializeSampleScene()
     {
@@ -155,6 +156,54 @@ public class ButtonControl : MonoBehaviour
 
 
     }
+
+    /*
+    private void InitializeSampleScene()
+    {
+        EnterYourName_obj = GameObject.Find("EnterYourName");
+        if (EnterYourName_obj != null)
+        {
+            Button enterYourNameButton = GameObject.Find("EnterNameButton")?.GetComponent<Button>();
+            if (enterYourNameButton != null)
+            {
+                enterYourNameButton.onClick.AddListener(EnterNameButton);
+            }
+            EnterYourName_obj.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("EnterYourName object not found!");
+        }
+
+        GameOver_Obj = GameObject.Find("GameOverPanel");
+        if (GameOver_Obj != null)
+        {
+            Button retryButton = GameObject.Find("RetryButton")?.GetComponent<Button>();
+            if (retryButton != null)
+            {
+                retryButton.onClick.AddListener(RetryButton);
+            }
+            else
+            {
+                Debug.LogError("RetryButton not found!");
+            }
+
+            Button returnToTitleButton = GameObject.Find("ReturnToTitleButton")?.GetComponent<Button>();
+            if (returnToTitleButton != null)
+            {
+                returnToTitleButton.onClick.AddListener(ReturnToTitleButton);
+            }
+            else
+            {
+                Debug.LogError("ReturnToTitleButton not found!");
+            }
+            GameOver_Obj.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("GameOverPanel object not found!");
+        }
+    }*/
 
 
     private void InitializeTitleScene()
@@ -327,12 +376,17 @@ public class ButtonControl : MonoBehaviour
 
 
 
+    
     public void EnterNameButton()
     {
-        playerName = playerNameInput.GetComponent<TMP_InputField>().text;
-        GameManager.instance.SavePlayerData(playerName, player[GameManager.instance.selectedCharacter].name);
+        //Debug.Log(player[GameManager.instance.selectedCharacter].name);
 
-        Debug.Log(playerName);
+        playerNameInput = GameObject.Find("InputField").GetComponent<TMP_InputField>();
+        playerName = playerNameInput.GetComponent<TMP_InputField>().text;
+        GameManager.instance.SavePlayerData(playerName,GameManager.instance.selectedCharacter.ToString());
+        //GameManager.instance.SavePlayerData(playerName,);
+        //Debug.Log(playerName);
+        //Debug.Log(player[GameManager.instance.selectedCharacter].name);
 
         GameObject gameover = GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject;//.gameObject.SetActive(true);//GameObject.Find("GameOverPanel");
         GameObject enterYourName = GameObject.Find("EnterYourName");
@@ -340,6 +394,8 @@ public class ButtonControl : MonoBehaviour
         enterYourName.SetActive(false);
 
     }
+
+
 
 }
 

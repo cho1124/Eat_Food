@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     private string filePath;
     public int playerScore;
-    private List<PlayerInfo> playerinfo = new List<PlayerInfo>();
+    public List<PlayerInfo> playerinfo = new List<PlayerInfo>();
 
 
     private void Awake()
@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
     public void SavePlayerDataToJson()
     {
         PlayerDataListWrapper wrapper = new PlayerDataListWrapper(playerinfo);
-        string jsonData = JsonUtility.ToJson(wrapper);
+        string jsonData = JsonUtility.ToJson(wrapper,true);
         string path = Path.Combine(Application.persistentDataPath, "playerData.json");
         File.WriteAllText(path, jsonData);
 
