@@ -19,8 +19,8 @@ public class Player_Generator : MonoBehaviour
     {
         player_data = players[GameManager.instance.selectedCharacter];
 
-        player = Instantiate(player_data.character_prefab);
-        player.transform.position = new Vector3(10f, 2f, 10f);
+        player = Instantiate(player_data.character_prefab, new Vector3(30f, 2f, 30f), Quaternion.identity);
+        //player.transform.position = new Vector3(30f, 2f, 30f);
         playerControl = player.AddComponent<PlayerControl>();
         playerControl.moveSpeed = player_data.moveSpeed;
         playerControl.characterType = player_data.CharacterType;
