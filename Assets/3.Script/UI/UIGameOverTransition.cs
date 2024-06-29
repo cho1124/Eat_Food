@@ -21,11 +21,15 @@ public class UIGameOverTransition : MonoBehaviour
 
 
         //leaderboard_obj = GameObject.Find("Leaderboard");
-        leaderboard = GameObject.Find("Leaderboard").GetComponentInChildren<TextMeshProUGUI>();
+        leaderboard = GameObject.Find("BestScore").GetComponentInChildren<TextMeshProUGUI>();
         leaderboard.text = $"<align=center>등수\t\t캐릭터\t\t이름\t\t점수</align>\n";
         playerinfo = GameManager.instance.GetPlayerInfos();
         playerinfo.Sort((x,y) => y.score.CompareTo(x.score));
-        for(int i = 0; i<playerinfo.Count; i++)
+
+        int count = playerinfo.Count < 3 ? playerinfo.Count : 3;
+        
+
+        for(int i = 0; i < count; i++)
         {
             leaderboard.text += $"<align=center>{i+1}등\t\t{playerinfo[i].characterName}\t\t{playerinfo[i].playerName}\t\t{playerinfo[i].score}\n</align>";
             //leaderboard.text += ("<align=center><tr><td>{0}등</td><td>{1}</td><td>{2}</td><td>{3}</td></tr></align>",i+1, playerinfo[i].characterName, playerinfo[i].playerName, playerinfo[i].score);

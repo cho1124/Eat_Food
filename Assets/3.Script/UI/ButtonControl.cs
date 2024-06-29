@@ -392,6 +392,7 @@ public class ButtonControl : MonoBehaviour
         playerNameInput = GameObject.Find("InputField").GetComponent<TMP_InputField>();
         playerName = playerNameInput.GetComponent<TMP_InputField>().text;
         GameManager.instance.SavePlayerData(playerName,GameManager.instance.selectedCharacter.ToString());
+        GameManager.instance.SavePlayerDataToJson();
         //GameManager.instance.SavePlayerData(playerName,);
         //Debug.Log(playerName);
         //Debug.Log(player[GameManager.instance.selectedCharacter].name);
