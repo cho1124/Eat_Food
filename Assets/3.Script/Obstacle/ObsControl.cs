@@ -111,16 +111,6 @@ public class ObsControl : MonoBehaviour
             Debug.Log("작동잘됨");
             On_Collapse();
         }
-
-        //음식이 플레이어랑 충돌했을때
-        if (collider.CompareTag("Player"))
-        {
-            obSpawner.instance.List_Active_False_ToPlayer(gameObject);
-            GameManager.instance.AddScore(10);
-            Debug.Log("scored!");
-
-            //점수추가
-        }
     }
 
     private void On_Collapse()

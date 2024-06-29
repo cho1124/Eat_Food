@@ -21,11 +21,12 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         playerCTRL = GetComponent<CharacterController>();
-        transform.position = new Vector3(30f, 2f, 30f);
+        
         is_dead = false;
         animator = GetComponent<Animator>();
 
-
+        float x = GameObject.Find("Map_Generator").GetComponent<Map_Generator>().map_width_get / 2f;
+        transform.position = new Vector3(x, 2, x);
     }
 
     void Update()
@@ -190,5 +191,16 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(cooltime);
         isSkillReady = true;
         Debug.Log("스킬 사용 가능");
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("음식 체크");
+        if (other.CompareTag("Food"))
+        {
+            Debug.Log("음식 처리");
+            GameObject.Find("ObstacleSpawner").GetComponent<ObstacleSpawner>().instance.List_Active_False_ToPlayer(other.gameObject);
+            GameManager.instance.AddScore(10);
+        }
     }
 }

@@ -27,7 +27,7 @@ public class Map_Generator : MonoBehaviour
 
     private void Setting_Map()
     {
-        Vector3 zero_position = new Vector3(cube_size / 2, 0, cube_size / 2);
+        Vector3 zero_position = new Vector3(cube_size / 2, - (cube_size / 2), cube_size / 2);
         Vector3 position = new Vector3();
         Vector3 scale = new Vector3(cube_size, cube_size, cube_size);
 
