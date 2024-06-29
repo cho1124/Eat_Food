@@ -22,6 +22,7 @@ public class PlayerControl : MonoBehaviour
     {
         playerCTRL = GetComponent<CharacterController>();
         is_dead = false;
+        animator = GetComponent<Animator>();
 
 
     }
@@ -61,6 +62,12 @@ public class PlayerControl : MonoBehaviour
         Vector3 inputDirection = new Vector3(x, 0, z);
         Vector3 movement = inputDirection.normalized * this.moveSpeed * Time.deltaTime;
 
+        float speed = Mathf.Sqrt(x * x + z * z);
+
+        // 애니메이터의 Speed 파라미터에 적용
+        animator.SetFloat("Speed", speed);
+
+
         if (inputDirection.magnitude > 0.1f)
         {
             Quaternion targetRotation = Quaternion.LookRotation(inputDirection);
@@ -79,6 +86,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (isSkillReady && Input.GetKeyDown(KeyCode.Space))
         {
+            animator.SetTrigger("Skill");
             switch (characterType)
             {
                 case CharacterType.매지션:
