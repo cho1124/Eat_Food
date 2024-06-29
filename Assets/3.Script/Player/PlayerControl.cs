@@ -93,15 +93,15 @@ public class PlayerControl : MonoBehaviour
             {
                 case CharacterType.매지션:
                     StartCoroutine(Teleport_Co());
-                    StartCoroutine(Cooltimer_co());
+                    StartCoroutine(Cooltimer_co(cooltime));
                     break;
                 case CharacterType.바이킹:
                     StartCoroutine(MakeBigger_co());
-                    StartCoroutine(Cooltimer_co());
+                    StartCoroutine(Cooltimer_co(cooltime));
                     break;
                 case CharacterType.빌더:
                     StartCoroutine(Repair_Floor_Co());
-                    StartCoroutine(Cooltimer_co());
+                    StartCoroutine(Cooltimer_co(cooltime));
                     break;
             }
         }
@@ -186,11 +186,23 @@ public class PlayerControl : MonoBehaviour
     }
 
     //스킬 구현 끝에 쿨타임 넣고싶으면 이 코루틴을 쓰면 됩니다
-    private IEnumerator Cooltimer_co()
+    private IEnumerator Cooltimer_co(float coolTime)
     {
-        yield return new WaitForSeconds(cooltime);
-        isSkillReady = true;
+        //yield return new WaitForSeconds(coolTime);
+        
+        
+
+        while (coolTime > 1.0f)
+        { 
+            coolTime -= Time.deltaTime;
+            ButtonControl.instance.CoolTime_image.fillAmount = (1.0f / coolTime); 
+            yield return new WaitForFixedUpdate(); 
+        }
         Debug.Log("스킬 사용 가능");
+        isSkillReady = true;
+
+
+
     }
 
     private void OnTriggerEnter(Collider other)

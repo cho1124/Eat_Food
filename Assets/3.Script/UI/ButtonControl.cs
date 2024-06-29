@@ -22,6 +22,8 @@ public class ButtonControl : MonoBehaviour
 
     private GameObject EnterYourName_obj;
     private GameObject GameOver_Obj;
+    public GameObject CoolTime_Obj;
+    public Image CoolTime_image;
 
 
     // 씬 트렌지션할때 잠깐 대기시키는 코루틴
@@ -147,6 +149,12 @@ public class ButtonControl : MonoBehaviour
         Button retryButton = GameObject.Find("RetryButton").GetComponent<Button>();
         Button returnToTitleButton = GameObject.Find("ReturnToTitleButton").GetComponent<Button>();
         GameOver_Obj.SetActive(false);
+
+        CoolTime_Obj = GameObject.Find("CoolTimeImage");
+        CoolTime_image = CoolTime_Obj.GetComponent<Image>();
+        
+
+
 
         retryButton.onClick.AddListener(RetryButton);
         returnToTitleButton.onClick.AddListener(ReturnToTitleButton);
