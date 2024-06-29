@@ -76,7 +76,7 @@ public class ObsControl : MonoBehaviour
 {
     private ObstacleSpawner obSpawner;
     private Rigidbody ob_r;
-    
+
     [SerializeField] private float rotateSpeed;
     [SerializeField] private MeshRenderer ob_msRenderer;
 
@@ -113,7 +113,7 @@ public class ObsControl : MonoBehaviour
         }
 
         //음식이 플레이어랑 충돌했을때
-        if(collider.CompareTag("Player"))
+        if (collider.CompareTag("Player"))
         {
             obSpawner.instance.List_Active_False_ToPlayer(gameObject);
             GameManager.instance.AddScore(10);

@@ -14161,7 +14161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2b3c9dd7b1dd448ac01795a3ca4f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ob_particle: {fileID: 435209807258091727}
   rotateSpeed: 15
   ob_msRenderer: {fileID: 8926691867476653338}
 --- !u!1 &4075337521761429136

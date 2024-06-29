@@ -4796,7 +4796,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e2b3c9dd7b1dd448ac01795a3ca4f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ob_particle: {fileID: 363734347933459922}
   rotateSpeed: 45
   ob_msRenderer: {fileID: 5452372765886078203}
 --- !u!1 &4445506453025973728

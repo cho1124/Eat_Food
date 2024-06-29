@@ -31,7 +31,7 @@ public class ButtonControl : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
     }
-  
+
     private void Awake()
     {
         if (instance == null)
@@ -50,26 +50,8 @@ public class ButtonControl : MonoBehaviour
 
         Debug.Log("ButtonControl");
 
-        sct = GameObject.Find("TransitionImage").GetComponent<SceneTransition>() ;
-        //InitializeSceneButtons(SceneManager.GetActiveScene());
-        //if (currentScene.name == "SelectChar")
-        //{
-        //    player = new GameObject[3];
-        //
-        //    // 비활성화된 오브젝트 포함하여 모든 오브젝트 찾기
-        //    var allObjects = Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.hideFlags == HideFlags.None).ToArray();
-        //    info = GameObject.FindObjectOfType<TextMeshProUGUI>();
-        //
-        //    for (int i = 1; i < 4; i++)
-        //    {
-        //        player[i - 1] = allObjects.FirstOrDefault(obj => obj.name == "Player" + i.ToString());
-        //        if (player[i - 1] == null)
-        //        {
-        //            Debug.LogError("Player" + i.ToString() + " not found!");
-        //        }
-        //    }
-        //}
-        //ShowCharInfo();
+        sct = GameObject.Find("TransitionImage").GetComponent<SceneTransition>();
+
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -89,13 +71,13 @@ public class ButtonControl : MonoBehaviour
         {
             Debug.Log("Start");
             InitializeSampleScene();
-            
+
         }
         else if (scene.name == "Title")
         {
             Debug.Log("title");
-           InitializeTitleScene();
-            
+            InitializeTitleScene();
+
         }
     }
 
@@ -162,7 +144,7 @@ public class ButtonControl : MonoBehaviour
 
     private void InitializeTitleScene()
     {
-        
+
         Button playButton = GameObject.Find("PlayButton").GetComponent<Button>();
         Button exitButton = GameObject.Find("ExitButton").GetComponent<Button>();
 
@@ -196,7 +178,7 @@ public class ButtonControl : MonoBehaviour
 
     public void ShowCharInfo()
     {
-        if(GameManager.instance.selectedCharacter==0)
+        if (GameManager.instance.selectedCharacter == 0)
         {
             info.text = "마술사 유령\n\n마술사 유령입니다\n슬라이딩을 할 수 있습니다";
 
@@ -304,6 +286,7 @@ public class ButtonControl : MonoBehaviour
 
     public void RetryButton()
     {
+        GameManager.instance.playerScore = 0;
         sct.SceneTrans("SampleScene");
         //SceneManager.LoadScene("SampleScene");
     }
@@ -319,14 +302,14 @@ public class ButtonControl : MonoBehaviour
     public void EnterNameButton()
     {
         playerName = playerNameInput.GetComponent<TMP_InputField>().text;
-        
+
         Debug.Log(playerName);
 
         GameObject gameover = GameObject.Find("Canvas").transform.Find("GameOverPanel").gameObject;//.gameObject.SetActive(true);//GameObject.Find("GameOverPanel");
         GameObject enterYourName = GameObject.Find("EnterYourName");
         gameover.SetActive(true);
         enterYourName.SetActive(false);
-        
+
     }
 
 }

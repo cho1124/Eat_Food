@@ -27,13 +27,13 @@ public class GameManager : MonoBehaviour
     public int selectedCharacter = 0;
 
     private string filePath;
-    private int playerScore;
+    public int playerScore;
     private List<PlayerInfo> playerinfo = new List<PlayerInfo>();
 
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            
+
         }
 
     }
@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         //테스트용 키
-        if(Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(0);
         }
@@ -79,8 +79,8 @@ public class GameManager : MonoBehaviour
 
     private void LoadAll()
     {
-        
-        
+
+
     }
 
     public void SavePlayerData(string playerName, string characterType)
@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void AddScore(int  score)
+    public void AddScore(int score)
     {
         playerScore += score;
     }
