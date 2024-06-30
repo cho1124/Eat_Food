@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        /*
         //테스트용 키
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -89,7 +90,7 @@ public class GameManager : MonoBehaviour
         {
             LoadPlayerDataFromJson();
             Debug.Log("Player data loaded.");
-        }
+        }*/
     }
 
     private void LoadAll()
