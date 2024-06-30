@@ -44,7 +44,12 @@ public class GameManager : MonoBehaviour
     private string filePath;
     public int playerScore;
     public List<PlayerInfo> playerinfo = new List<PlayerInfo>();
-
+    public AudioSource ShootaudioSource;
+    public AudioSource ImpactaudioSource;
+    public AudioClip ShootClip;
+    public AudioClip ImpactClip;
+    [Range(0, 1)]
+    public float globalVolume = 0.5f;  // 전역 볼륨 조절 변수
 
     private void Awake()
     {
@@ -63,40 +68,30 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
 
         }
+        ShootaudioSource = gameObject.AddComponent<AudioSource>();
+        ShootaudioSource.volume = globalVolume;
+
+        ImpactaudioSource = gameObject.AddComponent<AudioSource>();
+        ImpactaudioSource.volume = globalVolume;
 
     }
 
-    private void Start()
-    {
-        Debug.Log("Scene Start");
-    }
+    
 
 
-    private void Update()
+    public void PlaySound(AudioSource SelectedSource, AudioClip clip)
     {
-        /*
-        //테스트용 키
-        if (Input.GetKeyDown(KeyCode.R))
+        if (clip != null)
         {
-            SceneManager.LoadScene(0);
+            // 현재 재생 중인 오디오 클립을 중지합니다.
+            if (SelectedSource.isPlaying)
+            {
+                SelectedSource.Stop();
+            }
+
+            // 새로운 오디오 클립을 재생합니다.
+            SelectedSource.PlayOneShot(clip);
         }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            playerinfo.Add(new PlayerInfo("Player1", "a", 100)); // 예시 데이터 추가
-            SavePlayerDataToJson();
-            Debug.Log("Player data saved.");
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            LoadPlayerDataFromJson();
-            Debug.Log("Player data loaded.");
-        }*/
-    }
-
-    private void LoadAll()
-    {
-
-
     }
 
     public void SavePlayerData(string playerName, string characterType)

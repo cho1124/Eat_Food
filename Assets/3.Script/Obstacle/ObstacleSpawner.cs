@@ -87,6 +87,7 @@ public class ObstacleSpawner : MonoBehaviour
                 GameObject obs = List_Active_True();
                 obs.transform.position = randomVector;
                 obs.transform.localScale = randomScale;
+                GameManager.instance.PlaySound(GameManager.instance.ShootaudioSource, GameManager.instance.ShootClip);
             }
             yield return new WaitForSeconds(SpawnInterval);
         }
