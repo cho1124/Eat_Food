@@ -64,7 +64,7 @@ public class UIGameOverTransition : MonoBehaviour
         gameOverUI.DOScale(Vector3.one, 1f).SetEase(Ease.OutBack); // 서서히 확대
 
         leaderboard = GameObject.Find("BestScore").GetComponentInChildren<TextMeshProUGUI>();
-        leaderboard.text = $"\t등수\t\t캐릭터\t\t이름\t\t점수\n";
+        leaderboard.text = $"\t등수\t\t캐릭터\t\t이름\t\t\t점수\n";
         playerinfo = GameManager.instance.GetPlayerInfos();
         playerinfo.Sort((x, y) => y.score.CompareTo(x.score));
 
