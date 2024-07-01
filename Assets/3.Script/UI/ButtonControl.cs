@@ -378,6 +378,7 @@ public class ButtonControl : MonoBehaviour
 
     public void ReturnToTitleButton()
     {
+        GameManager.instance.playerScore = 0;
         sct.SceneTrans("Title");
         //SceneManager.LoadScene("Title");
     }

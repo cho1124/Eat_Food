@@ -64,25 +64,25 @@ public class UIGameOverTransition : MonoBehaviour
         gameOverUI.DOScale(Vector3.one, 1f).SetEase(Ease.OutBack); // 서서히 확대
 
         leaderboard = GameObject.Find("BestScore").GetComponentInChildren<TextMeshProUGUI>();
-        leaderboard.text = $"\t등수\t\t캐릭터\t\t\t이름\t\t\t점수</align>\n";
+        leaderboard.text = $"\t등수\t\t캐릭터\t\t이름\t\t점수\n";
         playerinfo = GameManager.instance.GetPlayerInfos();
         playerinfo.Sort((x, y) => y.score.CompareTo(x.score));
 
         // 각 열의 너비를 일정하게 맞추기 위한 포맷 문자열
-        string format = "{0,-6} {1,-10} {2,-20} {3,10}\n";
+        string format = "{0,-4} {1,-5} {2,-8} {3,-10}\n";
 
         if (playerinfo.Count < 10)
         {
             for (int i = 0; i < playerinfo.Count; i++)
             {
-                leaderboard.text += string.Format(format, "\t" + (i + 1) + "등", "\t\t" + playerinfo[i].characterName, "\t\t" + playerinfo[i].playerName, "\t\t" + playerinfo[i].score);
+                leaderboard.text += string.Format(format, "\t" + (i + 1) + "등", "\t\t" + playerinfo[i].characterName, "\t" + playerinfo[i].playerName, "\t\t" + playerinfo[i].score);
             }
         }
         else
         {
             for (int i = 0; i < 10; i++)
             {
-                leaderboard.text += string.Format(format, "\t" + (i + 1) + "등", "\t\t" + playerinfo[i].characterName, "\t\t" + playerinfo[i].playerName, "\t\t" + playerinfo[i].score);
+                leaderboard.text += string.Format(format, "\t" + (i + 1) + "등", "\t\t" + playerinfo[i].characterName, "\t" + playerinfo[i].playerName, "\t\t" + playerinfo[i].score);
             }
         }
 
