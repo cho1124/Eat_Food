@@ -27,7 +27,7 @@ public class PlayerInfo
         }
         else if(characterName == "2")
         {
-            this.characterName = "ºô´õ À¯·É";
+            this.characterName = "ºô´õ À¯·É\t";
         }
 
 
